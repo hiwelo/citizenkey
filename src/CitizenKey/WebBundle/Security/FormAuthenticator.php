@@ -79,7 +79,7 @@ class FormAuthenticator extends AbstractGuardAuthenticator
     public function checkCredentials($credentials, UserInterface $user)
     {
         // check credentials - e.g. make sure the password is valid
-        if (password_verify($credentials['password'], $user->getPassword())) {
+        if (password_verify($credentials['password'], $user->getPassword()) && $user->getActivation()) {
             return true;
         }
 
