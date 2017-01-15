@@ -30,17 +30,9 @@ security:
 
         web:
             pattern: ^/app
-            # methods: [GET, POST]
-            # form_login:
-            #     login_path: /app/login
-            #     check_path: /app/login_check
-            #     remember_me: true
-            # anonymous: true
-            #
-            # logout:
-            #     path: /app/logout
-            #     target: /
-            #
+            logout:
+                path: /app/logout
+                target: /
             guard:
                 authenticators:
                     - web.form_authenticator

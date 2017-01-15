@@ -29,6 +29,13 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/logout", name="app_logout")
+     */
+    public function logoutAction(Request $request)
+    {
+    }
+
+    /**
      * @Route("/login_check", name="app_login_check")
      */
     public function loginCheckAction(Request $request)
