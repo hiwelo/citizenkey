@@ -65,8 +65,13 @@ class FormAuthenticator extends AbstractGuardAuthenticator
         $user = $this->em->getRepository('CoreBundle:User');
         $user = $user->findOneByEmail($email);
 
+        if (null !== $user) {
+            $username = $user->getUsername();
+        } else {
+            $username = $email;
+        }
 
-        $user = $userProvider->loadUserByUsername($user->getUsername());
+        $user = $userProvider->loadUserByUsername($username);
 
         // if null, authentication will fail
         // if a User object, checkCredentials() is called
@@ -91,7 +96,7 @@ class FormAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        $url = $this->router->generate('app_dashboard');
+        $url = $this->router->generate('app_platform_choice');
         return new RedirectResponse($url);
     }
 
@@ -100,8 +105,9 @@ class FormAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception) {
         $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
-        // $url = $this->router->generate('app_login');
-        // return new RedirectResponse($url);
+
+        $url = $this->router->generate('app_login');
+        return new RedirectResponse($url);
     }
 
     /**

@@ -64,6 +64,13 @@ class User implements UserInterface
      */
     private $activation;
 
+    /**
+     * @var Platform
+     *
+     * @ORM\OneToMany(targetEntity="Platform", mappedBy="owner")
+     */
+    private $platforms;
+
 
     /**
      * Get id
@@ -229,5 +236,46 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->platforms = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add platform
+     *
+     * @param \CitizenKey\CoreBundle\Entity\Platform $platform
+     *
+     * @return User
+     */
+    public function addPlatform(\CitizenKey\CoreBundle\Entity\Platform $platform)
+    {
+        $this->platforms[] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Remove platform
+     *
+     * @param \CitizenKey\CoreBundle\Entity\Platform $platform
+     */
+    public function removePlatform(\CitizenKey\CoreBundle\Entity\Platform $platform)
+    {
+        $this->platforms->removeElement($platform);
+    }
+
+    /**
+     * Get platforms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlatforms()
+    {
+        return $this->platforms;
     }
 }

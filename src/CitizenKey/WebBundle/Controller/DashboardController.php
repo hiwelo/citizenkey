@@ -12,9 +12,31 @@ class DashboardController extends Controller
      */
     public function indexAction()
     {
+        $this->subscriptionCheck();
+
         return $this->render('WebBundle:Dashboard:index.html.twig', array(
             // ...
         ));
     }
 
+    /**
+     * Check if the user have access to the platform
+     * @return boolean
+     */
+    private function subscriptionCheck()
+    {
+        $selectedPlatform = $this->get('session')->get('platform');
+        $subscriptions = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Subscription');
+        $subscription = $subscriptions->findOneBy([
+            'user' => $this->getUser(),
+            'platform' => $selectedPlatform,
+            'active' => true,
+        ]);
+
+        if (null === $subscription) {
+            return $this->redirectToRoute('app_platform_choice');
+        }
+
+        return true;
+    }
 }
