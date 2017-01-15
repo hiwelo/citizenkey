@@ -14,8 +14,12 @@ class DashboardController extends Controller
     {
         $this->subscriptionCheck();
 
+        $em = $this->getDoctrine()->getManager();
+        $platforms = $em->getRepository('CoreBundle:Platform');
+        $platform = $platforms->find($this->userSubscription->getPlatform());
+
         return $this->render('WebBundle:Dashboard:index.html.twig', array(
-            // ...
+            'platform' => $platform,
         ));
     }
 
@@ -36,6 +40,8 @@ class DashboardController extends Controller
         if (null === $subscription) {
             return $this->redirectToRoute('app_platform_choice');
         }
+
+        $this->userSubscription = $subscription;
 
         return true;
     }
