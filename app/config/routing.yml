@@ -1,0 +1,14 @@
+citizen_key_web:
+    resource: "@WebBundle/Controller/"
+    type:     annotation
+    prefix:   /app
+
+citizen_key_core:
+    resource: "@CoreBundle/Controller/"
+    type:     annotation
+    prefix:   /core
+
+citizen_key_api:
+    resource: "@ApiBundle/Controller/"
+    type:     annotation
+    prefix:   /api/v1
