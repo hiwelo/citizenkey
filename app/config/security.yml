@@ -1,17 +1,50 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
+    hide_user_not_found: true
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 13
+        CitizenKey\CoreBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 13
+
     providers:
-        in_memory:
-            memory: ~
+        database_users:
+            entity:
+                class:      CoreBundle:User
+                property:   username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        login:
+            pattern: ^/app/login$
+            security: false
+
+        web:
+            pattern: ^/app
+            # methods: [GET, POST]
+            # form_login:
+            #     login_path: /app/login
+            #     check_path: /app/login_check
+            #     remember_me: true
+            # anonymous: true
+            #
+            # logout:
+            #     path: /app/logout
+            #     target: /
+            #
+            guard:
+                authenticators:
+                    - web.form_authenticator
+                entry_point: web.form_authenticator
 
         main:
             anonymous: ~
@@ -22,3 +55,11 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+    access_control:
+        - { path: ^/app, roles: ROLE_USER }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+    role_hierarchy:
+        ROLE_ADMIN:         [ROLE_TEAM, ROLE_USER]
+        ROLE_SUPERADMIN:    [ROLE_ADMIN]
