@@ -197,6 +197,20 @@ class User implements UserInterface
     }
 
     /**
+     * Hash and set a non-hashed password
+     *
+     * @param string $plainPassword non hashed password
+     *
+     * @return User
+     */
+    public function setNewPassword($plainPassword)
+    {
+        $hashedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
+
+        return $this->setPassword($hashedPassword);
+    }
+
+    /**
      * Get password
      *
      * @return string

@@ -12,7 +12,7 @@ class LoadUserData implements FixtureInterface
     {
         $userAdmin = new User();
         $userAdmin->setUsername('admin');
-        $userAdmin->setPassword('test');
+        $userAdmin->setNewPassword('test');
         $userAdmin->setEmail('test@domain.net');
         $userAdmin->setActivation(true);
 
