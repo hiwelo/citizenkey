@@ -80,8 +80,8 @@ then
     rm -r html
     cp app/config/parameters.vagrant.yml app/config/parameters.yml
     composer install
-    php bin/console doctrine:schema:create --dump-sql
-    # php bin/console doctrine:fixtures:load
+    php bin/console doctrine:schema:create
+    php bin/console doctrine:fixtures:load --no-interaction
 fi
 
 if [ $ROOT = 'YES' ]
