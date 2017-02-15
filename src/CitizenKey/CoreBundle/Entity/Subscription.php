@@ -38,7 +38,7 @@ class Subscription
      *
      * ORM\Column(name="roles", type="array")
      */
-    private $roles;
+    private $roles = ['ROLE_USER'];
 
     /**
      * @var boolean
