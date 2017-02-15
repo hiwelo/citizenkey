@@ -41,14 +41,14 @@ class User implements UserInterface
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
-    private $name = ['ROLE_USER'];
+    private $name;
 
     /**
      * @var array
      *
      * @ORM\Column(name="roles", type="simple_array")
      */
-    private $roles;
+    private $roles = ['ROLE_USER'];
 
     /**
      * @var string
