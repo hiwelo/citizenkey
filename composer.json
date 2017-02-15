@@ -55,7 +55,10 @@
         "lint": [
             "./vendor/bin/phpcs --standard=Symfony3Custom ./src"
         ],
-        "phpcbf": "./vendor/bin/phpcbf --standard=Symfony3Custom ./src"
+        "phpcbf": "./vendor/bin/phpcbf --standard=Symfony3Custom ./src",
+        "tests": [
+            "./vendor/bin/phpunit"
+        ]
     },
     "extra": {
         "symfony-app-dir": "app",
