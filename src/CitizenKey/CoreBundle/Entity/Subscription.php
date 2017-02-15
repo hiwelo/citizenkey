@@ -47,8 +47,7 @@ class Subscription
      */
     private $active;
 
-
-    /**
+/**
      * Get id
      *
      * @return int

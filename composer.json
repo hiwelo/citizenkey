@@ -32,7 +32,10 @@
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
-        "doctrine/doctrine-fixtures-bundle": "^2.3"
+        "doctrine/doctrine-fixtures-bundle": "^2.3",
+        "squizlabs/php_codesniffer": "^2.8",
+        "phpunit/phpunit": "^6.0",
+        "endouble/symfony3-custom-coding-standard": "^2.16"
     },
     "scripts": {
         "symfony-scripts": [
@@ -48,7 +51,11 @@
         ],
         "post-update-cmd": [
             "@symfony-scripts"
-        ]
+        ],
+        "lint": [
+            "./vendor/bin/phpcs --standard=Symfony3Custom ./src"
+        ],
+        "phpcbf": "./vendor/bin/phpcbf --standard=Symfony3Custom ./src"
     },
     "extra": {
         "symfony-app-dir": "app",

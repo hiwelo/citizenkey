@@ -9,6 +9,12 @@ use CitizenKey\CoreBundle\Entity\Subscription;
 
 class LoadSubscriptionData extends AbstractFixture implements OrderedFixtureInterface
 {
+    /**
+     * Fixture loading method
+     *
+     * @param  ObjectManager $manager
+     * @return void
+     */
     public function load(ObjectManager $manager)
     {
         $subscription = new Subscription();
@@ -22,6 +28,11 @@ class LoadSubscriptionData extends AbstractFixture implements OrderedFixtureInte
         $this->setReference('subscription', $subscription);
     }
 
+    /**
+     * Get fixture loading order
+     *
+     * @return integer Order
+     */
     public function getOrder()
     {
         return 3;

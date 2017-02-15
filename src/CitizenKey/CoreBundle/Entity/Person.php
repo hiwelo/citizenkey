@@ -89,8 +89,7 @@ class Person
      */
     private $tags;
 
-
-    /**
+/**
      * Get id
      *
      * @return int

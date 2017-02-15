@@ -12,5 +12,4 @@ class PlatformControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/platform/choice');
     }
-
 }

@@ -9,6 +9,12 @@ use CitizenKey\CoreBundle\Entity\User;
 
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 {
+    /**
+     * Fixture loading method
+     *
+     * @param  ObjectManager $manager
+     * @return void
+     */
     public function load(ObjectManager $manager)
     {
         $userAdmin = new User();
@@ -23,6 +29,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('user', $userAdmin);
     }
 
+    /**
+     * Get fixture loading order
+     *
+     * @return integer Order
+     */
     public function getOrder()
     {
         return 1;

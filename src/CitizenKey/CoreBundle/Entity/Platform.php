@@ -50,8 +50,7 @@ class Platform
      */
     private $icon;
 
-
-    /**
+/**
      * Get id
      *
      * @return int

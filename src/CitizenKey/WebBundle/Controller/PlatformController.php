@@ -9,6 +9,7 @@ class PlatformController extends Controller
 {
     /**
      * @Route("/platform/choice", name="app_platform_choice")
+     * @return void
      */
     public function choiceAction()
     {
@@ -25,13 +26,14 @@ class PlatformController extends Controller
             return $this->redirectToRoute('app_platform_select', ['platform' => $subs[0]->getId()]);
         }
 
-        return $this->render('WebBundle:Platform:select.html.twig', array(
-            // ...
-        ));
+        return $this->render('WebBundle:Platform:select.html.twig', []);
     }
 
     /**
      * @Route("/paltform/select/{platform}", name="app_platform_select")
+     *
+     * @param  string $platform platform id
+     * @return void
      */
     public function selectAction($platform = null)
     {
@@ -45,10 +47,10 @@ class PlatformController extends Controller
 
         if ($subscription->getUser() === $this->getUser()) {
             $this->get('session')->set('platform', $subscription->getPlatform());
+
             return $this->redirectToRoute('app_dashboard');
         } else {
             return $this->redirectToRoute('app_platform_choice');
         }
     }
-
 }

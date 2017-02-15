@@ -71,8 +71,7 @@ class User implements UserInterface
      */
     private $platforms;
 
-
-    /**
+/**
      * Get id
      *
      * @return int
@@ -244,13 +243,24 @@ class User implements UserInterface
         return $this->activation;
     }
 
+    /**
+     * Get salt
+     *
+     * @return void
+     */
     public function getSalt()
     {
     }
 
+    /**
+     * Erase Credentials
+     *
+     * @return void
+     */
     public function eraseCredentials()
     {
     }
+
     /**
      * Constructor
      */

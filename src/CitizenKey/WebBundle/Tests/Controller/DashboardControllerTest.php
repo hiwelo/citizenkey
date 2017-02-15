@@ -12,5 +12,4 @@ class DashboardControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/dashboard');
     }
-
 }

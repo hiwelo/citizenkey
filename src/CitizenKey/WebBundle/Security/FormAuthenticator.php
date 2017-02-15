@@ -33,6 +33,8 @@ class FormAuthenticator extends AbstractGuardAuthenticator
 
     /**
      * Creates a new instance of FormAuthenticator
+     *
+     * {@inheritdoc}
      */
     public function __construct(EntityManager $em, RouterInterface $router)
     {
@@ -43,6 +45,8 @@ class FormAuthenticator extends AbstractGuardAuthenticator
     /**
      * Called on every request.
      * Return whatever credentials you want, or null to stop authentication
+     *
+     * {@inheritdoc}
      */
     public function getCredentials(Request $request)
     {
@@ -97,16 +101,19 @@ class FormAuthenticator extends AbstractGuardAuthenticator
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
         $url = $this->router->generate('app_platform_choice');
+
         return new RedirectResponse($url);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception) {
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+    {
         $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
 
         $url = $this->router->generate('app_login');
+
         return new RedirectResponse($url);
     }
 
@@ -117,6 +124,7 @@ class FormAuthenticator extends AbstractGuardAuthenticator
     public function start(Request $request, AuthenticationException $authException = null)
     {
         $url = $this->router->generate('app_login');
+
         return new RedirectResponse($url);
     }
 

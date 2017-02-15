@@ -10,6 +10,8 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/")
+     *
+     * @return void
      */
     public function indexAction()
     {
@@ -18,6 +20,9 @@ class DefaultController extends Controller
 
     /**
      * @Route("/login", name="app_login")
+     *
+     * @param  Request $request
+     * @return void
      */
     public function loginAction(Request $request)
     {
@@ -30,6 +35,9 @@ class DefaultController extends Controller
 
     /**
      * @Route("/logout", name="app_logout")
+     *
+     * @param  Request $request
+     * @return void
      */
     public function logoutAction(Request $request)
     {
@@ -37,6 +45,9 @@ class DefaultController extends Controller
 
     /**
      * @Route("/login_check", name="app_login_check")
+     *
+     * @param  Request $request
+     * @return void
      */
     public function loginCheckAction(Request $request)
     {

@@ -9,6 +9,8 @@ class DashboardController extends Controller
 {
     /**
      * @Route("/dashboard", name="app_dashboard")
+     *
+     * @return void
      */
     public function indexAction()
     {
@@ -25,6 +27,7 @@ class DashboardController extends Controller
 
     /**
      * Check if the user have access to the platform
+     *
      * @return boolean
      */
     private function subscriptionCheck()

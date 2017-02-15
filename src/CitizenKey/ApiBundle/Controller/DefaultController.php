@@ -9,6 +9,8 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/")
+     *
+     * @return void
      */
     public function indexAction()
     {

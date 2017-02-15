@@ -9,6 +9,12 @@ use CitizenKey\CoreBundle\Entity\Platform;
 
 class LoadPlatformData extends AbstractFixture implements OrderedFixtureInterface
 {
+    /**
+     * Fixture loading method
+     *
+     * @param  ObjectManager $manager
+     * @return void
+     */
     public function load(ObjectManager $manager)
     {
         $platform = new Platform();
@@ -22,6 +28,11 @@ class LoadPlatformData extends AbstractFixture implements OrderedFixtureInterfac
         $this->setReference('platform', $platform);
     }
 
+    /**
+     * Get fixture loading order
+     *
+     * @return integer Order
+     */
     public function getOrder()
     {
         return 2;
