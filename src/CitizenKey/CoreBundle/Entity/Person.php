@@ -89,6 +89,12 @@ class Person
      */
     private $tags;
 
+    /**
+     * @var array
+     * @ORM\OneToMany(targetEntity="Phone", mappedBy="person")
+     */
+    private $phones;
+
 /**
      * Get id
      *
@@ -323,5 +329,46 @@ class Person
     public function getAvatar()
     {
         return '';
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->phones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add phone
+     *
+     * @param \CitizenKey\CoreBundle\Entity\Phone $phone
+     *
+     * @return Person
+     */
+    public function addPhone(\CitizenKey\CoreBundle\Entity\Phone $phone)
+    {
+        $this->phones[] = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Remove phone
+     *
+     * @param \CitizenKey\CoreBundle\Entity\Phone $phone
+     */
+    public function removePhone(\CitizenKey\CoreBundle\Entity\Phone $phone)
+    {
+        $this->phones->removeElement($phone);
+    }
+
+    /**
+     * Get phones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPhones()
+    {
+        return $this->phones;
     }
 }
