@@ -26,6 +26,23 @@ class DashboardController extends Controller
     }
 
     /**
+     * @Route("/dashboard/mailtest", name="app_dashboard_mail")
+     *
+     * @return void
+     */
+    public function mailAction()
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Test mail')
+            ->setFrom('damien@raccoon.studio')
+            ->setTo('mail@damiensenger.me')
+            ->setBody($this->renderView('WebBundle:Emails:test.html.twig'), 'text/html');
+
+        $this->get('mailer')->send($message);
+        return $this->render('WebBundle:Dashboard:mailtest.html.twig');
+    }
+
+    /**
      * Check if the user have access to the platform
      *
      * @return boolean
