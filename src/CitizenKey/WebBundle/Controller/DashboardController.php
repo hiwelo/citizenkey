@@ -8,20 +8,27 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DashboardController extends Controller
 {
     /**
-     * @Route("/dashboard", name="app_dashboard")
+     * @Route("/", name="app_dashboard")
      *
      * @return void
      */
     public function indexAction()
     {
         $this->subscriptionCheck();
-
         $em = $this->getDoctrine()->getManager();
-        $platforms = $em->getRepository('CoreBundle:Platform');
-        $platform = $platforms->find($this->userSubscription->getPlatform());
+
+        $user = $this->getUser();
+        $platformID = $this->get('session')->get('platform');
+        $platform = $em->getRepository('CoreBundle:Platform')->find($platformID);
+        $subscription = $em->getRepository('CoreBundle:Subscription')->findOneBy([
+            'platform' => $platform,
+            'user' => $user,
+        ]);
 
         return $this->render('WebBundle:Dashboard:index.html.twig', array(
+            'user' => $user,
             'platform' => $platform,
+            'subscription' => $subscription,
         ));
     }
 

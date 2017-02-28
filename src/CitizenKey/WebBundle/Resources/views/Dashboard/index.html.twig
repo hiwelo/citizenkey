@@ -1,9 +1,9 @@
-{% extends "::base.html.twig" %}
+{% extends "WebBundle:Default:layout.html.twig" %}
 
-{% block title %}WebBundle:Dashboard:index{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Dashboard:index page</h1>
+<h1>Welcome {{ user.username }} to the dashboard</h1>
 <dl>
     <dt>Platform</dt>
     <dd><a href="{{ path('app_platform_dashboard') }}">{{ platform.name }}</a></dd>

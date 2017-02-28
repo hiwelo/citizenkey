@@ -9,13 +9,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
-     *
      * @return void
      */
-    public function indexAction()
+    public function headerAction()
     {
-        return $this->render('WebBundle:Default:index.html.twig');
+        $user = $this->getUser();
+
+        return $this->render('WebBundle:Default:header.html.twig', [
+            'user' => $user,
+        ]);
     }
 
     /**

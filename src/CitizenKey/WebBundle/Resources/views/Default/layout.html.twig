@@ -12,6 +12,7 @@
                 {{ flash_message }}
             </div>
         {% endfor %}
+        {{ render(controller('WebBundle:Default:header')) }}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
