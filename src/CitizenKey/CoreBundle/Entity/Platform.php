@@ -50,7 +50,14 @@ class Platform
      */
     private $icon;
 
-/**
+    /**
+     * @var Subscription
+     *
+     * @ORM\OneToMany(targetEntity="Subscription", mappedBy="platform")
+     */
+    private $subscriptions;
+
+    /**
      * Get id
      *
      * @return int
@@ -154,5 +161,46 @@ class Platform
     public function getOwner()
     {
         return $this->owner;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subscriptions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add subscription
+     *
+     * @param \CitizenKey\CoreBundle\Entity\Subscription $subscription
+     *
+     * @return Platform
+     */
+    public function addSubscription(\CitizenKey\CoreBundle\Entity\Subscription $subscription)
+    {
+        $this->subscriptions[] = $subscription;
+
+        return $this;
+    }
+
+    /**
+     * Remove subscription
+     *
+     * @param \CitizenKey\CoreBundle\Entity\Subscription $subscription
+     */
+    public function removeSubscription(\CitizenKey\CoreBundle\Entity\Subscription $subscription)
+    {
+        $this->subscriptions->removeElement($subscription);
+    }
+
+    /**
+     * Get subscriptions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubscriptions()
+    {
+        return $this->subscriptions;
     }
 }

@@ -45,7 +45,7 @@ class PlatformController extends Controller
             'user' => $user,
         ]);
 
-        if (null === $platform) {
+        if (null === $platform || null === $subscription) {
             return $this->redirectToRoute('app_platform_choice');
         }
 

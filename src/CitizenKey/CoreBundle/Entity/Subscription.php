@@ -22,7 +22,7 @@ class Subscription
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Platform")
+     * @ORM\ManyToOne(targetEntity="Platform", inversedBy="subscriptions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $platform;

@@ -6,6 +6,6 @@
 <h1>Welcome to the Dashboard:index page</h1>
 <dl>
     <dt>Platform</dt>
-    <dd>{{ platform.name }}</dd>
+    <dd><a href="{{ path('app_platform_dashboard') }}">{{ platform.name }}</a></dd>
 </dl>
 {% endblock %}
