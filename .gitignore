@@ -16,3 +16,11 @@
 /web/bundles/
 *.log
 .vagrant/*
+
+# NodeJS and NPM ignored files
+node_modules/*
+npm-debug.log
+etc/
+
+# Gulp generated ignored files
+web/assets/dist/*
