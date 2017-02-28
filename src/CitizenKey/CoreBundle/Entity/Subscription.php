@@ -36,7 +36,7 @@ class Subscription
     /**
      * @var array
      *
-     * ORM\Column(name="roles", type="array")
+     * @ORM\Column(name="roles", type="simple_array")
      */
     private $roles = ['ROLE_USER'];
 
