@@ -1,0 +1,11 @@
+{% extends "WebBundle:Default:layout.html.twig" %}
+
+{% block title %}Platform dashboard{% endblock %}
+
+{% block body %}
+<p>
+    Welcome {{ user.username }},
+</p>
+<h1>{{ platform.name }}</h1>
+{{ dump(subscription) }}
+{% endblock %}
