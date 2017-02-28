@@ -162,6 +162,7 @@ class Platform
     {
         return $this->owner;
     }
+
     /**
      * Constructor
      */

@@ -49,7 +49,6 @@ class Phone
      */
     private $person;
 
-
     /**
      * Get id
      *

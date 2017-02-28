@@ -39,6 +39,7 @@ class DashboardController extends Controller
             ->setBody($this->renderView('WebBundle:Emails:test.html.twig'), 'text/html');
 
         $this->get('mailer')->send($message);
+
         return $this->render('WebBundle:Dashboard:mailtest.html.twig');
     }
 
