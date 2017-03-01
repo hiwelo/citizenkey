@@ -20,7 +20,7 @@ const project = {
     autoprefixer: ['> 1%', 'Firefox ESR', 'last 2 versions', 'not ie <= 10'],
     babel: ['es2015', 'es2016', 'es2017'],
     uglify: { preserveComments: 'license' },
-    scssExternalPaths: ['node_modules/foundation/scss'],
+    scssExternalPaths: ['node_modules/foundation-sites/scss', 'node_modules/motion-ui/src'],
   }
 };
 
@@ -37,7 +37,7 @@ project.paths = {
   styles: {
     root: 'css/',
     scss: 'css/*.scss',
-    scssFiles: ['css/*.scss', 'css/**/*.scss'],
+    scssFiles: 'css/**/*.scss',
   },
   scripts: {
     root: 'js/',
@@ -131,6 +131,7 @@ gulp.task('vendor', () => {
  * Gulp watch task
  */
 gulp.task('watch', () => {
+  gulp.watch(project.paths.root.src + project.paths.styles.scss, ['css']);
   gulp.watch(project.paths.root.src + project.paths.styles.scssFiles, ['css']);
   gulp.watch(project.paths.root.src + project.paths.scripts.files, ['js']);
 });

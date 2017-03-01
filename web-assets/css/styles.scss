@@ -8,9 +8,13 @@
  */
 
 //
-// CSS Foundation files import
-@import "foundation";
+// Project Configuration files
+@import "__settings";
 
 //
-// Project Configuration files
-@import "__variables";
+// CSS Foundation files import
+@import "foundation";
+@import 'motion-ui';
+@include foundation-everything;
+@include motion-ui-transitions;
+@include motion-ui-animations;
