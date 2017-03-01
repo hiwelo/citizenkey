@@ -20,6 +20,7 @@ const project = {
     autoprefixer: ['> 1%', 'Firefox ESR', 'last 2 versions', 'not ie <= 10'],
     babel: ['es2015', 'es2016', 'es2017'],
     uglify: { preserveComments: 'license' },
+    scssExternalPaths: ['node_modules/foundation/scss'],
   }
 };
 
@@ -29,8 +30,8 @@ const project = {
  */
 project.paths = {
   root: {
-    src: './web/assets/src/',
-    dist: './web/assets/dist/',
+    src: './web-assets/',
+    dist: './web/',
     vendors: './node_modules/',
   },
   styles: {
@@ -94,7 +95,7 @@ const onError = {
 gulp.task('css', () => {
   gulp.src(project.paths.root.src + project.paths.styles.scss)
       .pipe($.plumber(onError))
-      .pipe($.sass())
+      .pipe($.sass({ includePaths: project.config.scssExternalPaths }))
       .pipe($.autoprefixer({ browsers: project.config.autoprefixer }))
       .pipe($.myth())
       .pipe(gulp.dest(project.paths.root.dist + project.paths.styles.root)) // *.css

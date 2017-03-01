@@ -4,7 +4,8 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+        <link rel="stylesheet" media="all" href="{{ asset('css/styles.min.css') }}">
     </head>
     <body>
         {% for flash_message in app.session.flashBag.get('notice') %}

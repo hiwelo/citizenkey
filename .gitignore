@@ -23,4 +23,7 @@ npm-debug.log
 etc/
 
 # Gulp generated ignored files
-web/assets/dist/*
+web/css/*
+!web/css/.gitkeep
+web/js/*
+!web/js/.gitkeep
