@@ -60,6 +60,7 @@ project.paths = {
 project.jsVendors = {
   list: [
     `${project.paths.root.vendors}jquery/dist/jquery.js`,
+    `${project.paths.root.vendors}foundation-sites/dist/js/foundation.js`,
   ],
 };
 
