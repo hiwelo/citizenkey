@@ -9,7 +9,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @return void
+     * Load the header bar component into the template
+     *
+     * @return Symfony\Component\HttpFoundation\Response
      */
     public function headerAction()
     {
@@ -24,7 +26,7 @@ class DefaultController extends Controller
      * @Route("/login", name="app_login")
      *
      * @param  Request $request
-     * @return void
+     * @return Symfony\Component\HttpFoundation\Response
      */
     public function loginAction(Request $request)
     {
@@ -53,5 +55,15 @@ class DefaultController extends Controller
      */
     public function loginCheckAction(Request $request)
     {
+    }
+
+    /**
+     * Load the Skip Links component into the template
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    public function skipLinksAction()
+    {
+        return $this->render('WebBundle:Default:SkipLinks.html.twig');
     }
 }

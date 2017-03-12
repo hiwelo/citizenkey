@@ -8,13 +8,16 @@
         <link rel="stylesheet" media="all" href="{{ asset('css/styles.min.css') }}">
     </head>
     <body>
+        {{ render(controller('WebBundle:Default:SkipLinks')) }}
         {% for flash_message in app.session.flashBag.get('notice') %}
             <div class="flash-notice">
                 {{ flash_message }}
             </div>
         {% endfor %}
-        {{ render(controller('WebBundle:Default:header')) }}
-        {% block body %}{% endblock %}
+        {{ render(controller('WebBundle:Default:Header')) }}
+        <main id="content">
+            {% block body %}{% endblock %}
+        </main>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
