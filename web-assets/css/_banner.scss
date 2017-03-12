@@ -9,5 +9,19 @@
  */
 
 .banner {
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+  background: $brand-primary;
+  color: $white;
 
+  &__nav {
+    @extend .nav;
+    @extend .nav-pills;
+  }
+
+  &__nav-link {
+    @extend .nav-link;
+    color: $white;
+  }
 }

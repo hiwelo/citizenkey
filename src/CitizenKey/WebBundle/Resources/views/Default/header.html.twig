@@ -1,12 +1,11 @@
 <header class="banner" id="banner">
-    Welcome {{user.username}}
-
-    <nav>
-        <ul class="menu">
-            <li>
-                <a href="{{ path('app_platform_dashboard') }}">Platform</a>
-            </li>
-        </ul>
+    <nav class="banner__nav">
+        <a class="banner__nav-link" href="{{ path('app_platform_dashboard') }}">Platform</a>
     </nav>
-    <hr>
+
+    <div class="usernav">
+        <button class="usernav__button">
+            <img class="usernav__avatar" src="{{user.avatar}}" alt="Avatar de {{user.name}}">
+        </button>
+    </div>
 </header>

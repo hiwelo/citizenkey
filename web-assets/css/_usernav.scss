@@ -1,0 +1,24 @@
+/**
+ * User navigation styles
+ *
+ * This stylesheet contains all declarations used by the user navigation component.
+ *
+ * Root selector: .usernav
+ *
+ * @author Damien Senger <damien@raccoon.studio>
+ */
+
+.usernav {
+  &__avatar {
+    height: 100%;
+    width: auto;
+  }
+
+  &__button {
+    background: none;
+    border: 0;
+
+    @extend .p-2;
+    @extend .h-banner;
+  }
+}
