@@ -20,7 +20,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userAdmin = new User();
         $userAdmin->setUsername('admin');
         $userAdmin->setNewPassword('test');
-        $userAdmin->setEmail('test@domain.net');
+        $userAdmin->setEmail('damien@raccoon.studio');
         $userAdmin->setActivation(true);
         $userAdmin->setRoles(['ROLE_USER', 'ROLE_MANAGER', 'ROLE_TECH', 'ROLE_ADMIN']);
 

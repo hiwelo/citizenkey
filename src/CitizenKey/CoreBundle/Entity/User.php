@@ -65,13 +65,22 @@ class User implements UserInterface
     private $activation;
 
     /**
+     * Returns a gravatar for the user's email or a generic avatar
+     *
+     * @var string
+     *
+     * @ORM\Column(name="avatar", type="text", nullable=true)
+     */
+    private $avatar = null;
+
+    /**
      * @var Platform
      *
      * @ORM\OneToMany(targetEntity="Platform", mappedBy="owner")
      */
     private $platforms;
 
-/**
+    /**
      * Get id
      *
      * @return int
@@ -301,5 +310,42 @@ class User implements UserInterface
     public function getPlatforms()
     {
         return $this->platforms;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param string $avatar
+     *
+     * @return User
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        // if there's any avatar URL in the database, we search for a gravatar
+        if (is_null($this->avatar) && null !== $this->getEmail()) {
+            $gravatar = [
+                'https://www.gravatar.com/avatar/',
+                md5($this->getEmail()),
+                '?s=200',
+                '&d=identicon',
+                '&r=g',
+            ];
+
+            return implode($gravatar);
+        }
+
+        return $this->avatar;
     }
 }
