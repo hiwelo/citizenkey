@@ -5,4 +5,26 @@
 {% block body %}
 <h1>{{contact.name}}</h1>
 
+<h2>Civil status</h2>
+<dl>
+    <dt>Firstname</dt>
+    <dd>{{contact.firstname}}</dd>
+    <dt>Lastname</dt>
+    <dd>{{contact.lastname}}</dd>
+    <dt>Gender</dt>
+    <dd>{{contact.gender}}</dd>
+    <dt>Birthdate</dt>
+    <dd>{{contact.birthdate|date("d/m/Y")}}</dd>
+</dl>
+
+<h2>Miscellaneous</h2>
+<dl>
+    <dt>Position</dt>
+    <dd>{{contact.position}}</dd>
+    <dt>Company</dt>
+    <dd>{{contact.company}}</dd>
+    <dt>Tags</dt>
+    <dd>{{contact.tags|join(', ')}}</dd>
+</dl>
+
 {% endblock %}
