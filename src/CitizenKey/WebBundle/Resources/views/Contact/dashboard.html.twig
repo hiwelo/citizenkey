@@ -1,0 +1,10 @@
+{% extends "WebBundle:Default:layout.html.twig" %}
+
+{% block title %}Contacts dashboard{% endblock %}
+
+{% block body %}
+<h1>Welcome to the contact dashboard</h1>
+
+{{render(controller('WebBundle:Contact:LastContacts'))}}
+
+{% endblock %}
