@@ -43,6 +43,13 @@ class Person
     private $lastname;
 
     /**
+     * Returns a formatted name for the current person
+     *
+     * @var string
+     */
+    private $name;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="gender", type="smallint")
@@ -95,7 +102,7 @@ class Person
      */
     private $phones;
 
-/**
+    /**
      * Get id
      *
      * @return int
@@ -151,6 +158,16 @@ class Person
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * Get formatted name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->firstname . ' ' . $this->lastname;
     }
 
     /**
