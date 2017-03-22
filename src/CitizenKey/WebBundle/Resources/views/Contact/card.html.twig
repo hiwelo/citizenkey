@@ -25,6 +25,8 @@
     <dd>{{contact.company}}</dd>
     <dt>Tags</dt>
     <dd>{{contact.tags|join(', ')}}</dd>
+    <dt>Contact creation date</dt>
+    <dd>{{contact.creationDate|date('d/m/Y')}}</dd>
 </dl>
 
 {% endblock %}

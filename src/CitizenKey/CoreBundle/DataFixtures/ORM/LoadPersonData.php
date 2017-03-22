@@ -24,6 +24,7 @@ class LoadPersonData extends AbstractFixture implements OrderedFixtureInterface
         $person->setVoter(false);
         $person->setBirthdate((new \DateTime('1990-01-30')));
         $person->setPlatform($this->getReference('platform'));
+        $person->setCreationDate(new \DateTime());
 
         $manager->persist($person);
         $manager->flush();

@@ -52,7 +52,7 @@ class Person
     /**
      * @var int
      *
-     * @ORM\Column(name="gender", type="smallint")
+     * @ORM\Column(name="gender", type="smallint", nullable=true)
      */
     private $gender;
 
@@ -97,10 +97,18 @@ class Person
     private $tags;
 
     /**
+     * @var \DateTime
+     * @ORM\Column(name="creationDate", type="datetime")
+     */
+    private $creationDate;
+
+    /**
      * @var array
      * @ORM\OneToMany(targetEntity="Phone", mappedBy="person")
      */
     private $phones;
+
+
 
     /**
      * Get id
@@ -388,5 +396,29 @@ class Person
     public function getPhones()
     {
         return $this->phones;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     *
+     * @return Person
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
     }
 }
