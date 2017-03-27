@@ -12,7 +12,7 @@
   display: flex;
     justify-content: space-between;
     align-items: center;
-  background: green;
+  background: $gray-lighter;
   color: $gray-dark;
 
   &__nav {
