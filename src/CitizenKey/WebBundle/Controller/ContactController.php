@@ -7,13 +7,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use CitizenKey\WebBundle\Form\ContactType;
 use CitizenKey\CoreBundle\Entity\Person;
+use CitizenKey\CoreBundle\Entity\Phone;
 
 class ContactController extends Controller
 {
     /**
      * Contacts module dashboard
      *
-     * @Route("/contacts", name="app_contacts")
+     * @Route("/contacts/", name="app_contacts")
      *
      * @return Symfony\Component\HttpFoundation\Response
      */
@@ -29,7 +30,7 @@ class ContactController extends Controller
     /**
      * Creates a new contact card
      *
-     * @Route("/contacts/new", name="app_contact_new")
+     * @Route("/contacts/new/", name="app_contact_new")
      *
      * @return Symfony\Component\HttpFoundation\Response
      */

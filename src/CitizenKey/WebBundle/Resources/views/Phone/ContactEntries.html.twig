@@ -1,0 +1,17 @@
+{# Component displaying all phone entries for a contact #}
+
+{% if phones %}
+<h3>Phone numbers</h3>
+<ul>
+    {% for phone in phones %}
+    <li>
+        <a href="tel:{{phone.number}}">
+            {{phone.number}}
+        </a>
+    </li>
+    {% endfor %}
+    <li>
+        <a href="{{path('app_phone_new', {'contact': contact.id})}}">Add a new phone number</a>
+    </li>
+</ul>
+{% endif %}
