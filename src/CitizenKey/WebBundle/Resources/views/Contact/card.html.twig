@@ -29,6 +29,7 @@
     <dd>{{contact.creationDate|date('d/m/Y')}}</dd>
 </dl>
 
+{{render(controller('WebBundle:EmailAddress:contactEntries', {'contact': contact.id}))}}
 {{render(controller('WebBundle:Phone:contactEntries', {'contact': contact.id}))}}
 
 <a href="{{path('app_contact_edit', {'contact': contact.id})}}">Edit this card</a>
