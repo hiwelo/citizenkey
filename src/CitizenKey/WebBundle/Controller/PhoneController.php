@@ -11,7 +11,7 @@ use CitizenKey\CoreBundle\Entity\Phone;
 class PhoneController extends Controller
 {
     /**
-     * Creates a new contact card
+     * Creates a new phone entry for a contact
      *
      * @Route("/contact/{contact}/phone/new/", name="app_phone_new")
      *
