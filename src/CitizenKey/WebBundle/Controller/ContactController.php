@@ -63,19 +63,81 @@ class ContactController extends Controller
     /**
      * Contact card with all informations and details
      *
-     * @Route("/contact/{contact}", name="app_contact")
+     * @Route("/contact/{contact}/", name="app_contact")
+     *
+     * @param string $contact Contact ID
      *
      * @return Symfony\Component\HttpFoundation\Response
      */
     public function cardAction($contact)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $platforms = $em->getRepository('CoreBundle:Platform');
+        $platform = $platforms->find($this->get('session')->get('platform'));
+
         $people = $em->getRepository('CoreBundle:Person');
 
-        return $this->render('WebBundle:Contact:card.html.twig', array(
+        $contact = $people->findOneBy([
+            'id' => $contact,
+            'platform' => $platform,
+        ]);
+
+        if (!$contact) {
+            return $this->redirectToRoute('app_contacts');
+        }
+
+        return $this->render('WebBundle:Contact:card.html.twig', [
             'user' => $this->getUser(),
-            'contact' => $people->find($contact),
-        ));
+            'contact' => $contact,
+        ]);
+    }
+
+    /**
+     * Contact card edition
+     *
+     * @Route("/contact/{contact}/edit", name="app_contact_edit")
+     *
+     * @param string                                   $contact Contact ID
+     * @param Symfony\Component\HttpFoundation\Request $request Request object
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction($contact, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $platforms = $em->getRepository('CoreBundle:Platform');
+        $platform = $platforms->find($this->get('session')->get('platform'));
+
+        $people = $em->getRepository('CoreBundle:Person');
+
+        $person = $people->findOneBy([
+            'id' => $contact,
+            'platform' => $platform,
+        ]);
+
+        if (!$person) {
+            return $this->redirectToRoute('app_contacts');
+        }
+
+        $form = $this->createForm(ContactType::class, $person);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $person = $form->getData();
+            $em->persist($person);
+            $em->flush();
+
+            return $this->redirectToRoute('app_contact', ['contact' => $person->getID()]);
+        }
+
+        return $this->render('WebBundle:Contact:edit.html.twig', [
+            'user' => $this->getUser(),
+            'contact' => $person,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**

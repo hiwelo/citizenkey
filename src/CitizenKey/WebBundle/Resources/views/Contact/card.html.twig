@@ -29,4 +29,6 @@
     <dd>{{contact.creationDate|date('d/m/Y')}}</dd>
 </dl>
 
+<a href="{{path('app_contact_edit', {'contact': contact.id})}}">Edit this card</a>
+
 {% endblock %}
