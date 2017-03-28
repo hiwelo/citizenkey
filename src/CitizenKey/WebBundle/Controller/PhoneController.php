@@ -5,7 +5,8 @@ namespace CitizenKey\WebBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use CitizenKey\WebBundle\Form\PhoneType;
+use CitizenKey\CoreBundle\Entity\Phone;
 
 class PhoneController extends Controller
 {
@@ -18,7 +19,35 @@ class PhoneController extends Controller
      */
     public function newAction($contact, Request $request)
     {
-        return $this->render('WebBundle:Contact:new.html.twig', []);
+        $em = $this->getDoctrine()->getManager();
+        $platforms = $em->getRepository('CoreBundle:Platform');
+        $people = $em->getRepository('CoreBundle:Person');
+
+        $platform = $platforms->find($this->get('session')->get('platform'));
+        $person = $people->findOneBy([
+            'platform' => $platform,
+            'id' => $contact,
+        ]);
+
+        $phone = new Phone();
+        $phone->setPerson($person);
+
+        $form = $this->createForm(PhoneType::class, $phone);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $phone = $form->getData();
+            $em->persist($phone);
+            $em->flush();
+
+            return $this->redirectToRoute('app_contact', ['contact' => $person->getID()]);
+        }
+
+        return $this->render('WebBundle:Phone:new.html.twig', [
+            'contact' => $person,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**

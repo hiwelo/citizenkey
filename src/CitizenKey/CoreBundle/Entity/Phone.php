@@ -3,6 +3,8 @@
 namespace CitizenKey\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use libphonenumber\PhoneNumberUtil;
+use libphonenumber\PhoneNumberToCarrierMapper;
 
 /**
  * Phone
@@ -24,7 +26,7 @@ class Phone
     /**
      * @var string
      *
-     * @ORM\Column(name="number", type="string", length=15)
+     * @ORM\Column(name="number", type="phone_number", length=15)
      */
     private $number;
 
@@ -153,5 +155,17 @@ class Phone
     public function getPerson()
     {
         return $this->person;
+    }
+
+    /**
+     * Returns a diallable phone number for the asked country
+     *
+     * @param string $locale Country of the diallable phone number
+     *
+     * @return libphonenumber\PhoneNumberUtil
+     */
+    public function getDiallableNumber($locale = 'FR')
+    {
+        return PhoneNumberUtil::getInstance()->formatOutOfCountryCallingNumber($this->getNumber(), $locale);
     }
 }

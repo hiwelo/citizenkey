@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use CitizenKey\WebBundle\Form\ContactType;
 use CitizenKey\CoreBundle\Entity\Person;
-use CitizenKey\CoreBundle\Entity\Phone;
 
 class ContactController extends Controller
 {

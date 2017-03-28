@@ -5,8 +5,8 @@
 <ul>
     {% for phone in phones %}
     <li>
-        <a href="tel:{{phone.number}}">
-            {{phone.number}}
+        <a href="tel:{{phone.number|phone_number_format('E164')}}">
+            {{phone.diallableNumber}}
         </a>
     </li>
     {% endfor %}
