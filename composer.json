@@ -29,7 +29,8 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "giggsey/libphonenumber-for-php": "8.3.3.1",
-        "misd/phone-number-bundle": "^1.2"
+        "misd/phone-number-bundle": "^1.2",
+        "willdurand/geocoder-bundle": "^4.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

@@ -16,6 +16,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Misd\PhoneNumberBundle\MisdPhoneNumberBundle(),
+            new Bazinga\Bundle\GeocoderBundle\BazingaGeocoderBundle(),
             new CitizenKey\ApiBundle\ApiBundle(),
             new CitizenKey\CoreBundle\CoreBundle(),
             new CitizenKey\WebBundle\WebBundle(),

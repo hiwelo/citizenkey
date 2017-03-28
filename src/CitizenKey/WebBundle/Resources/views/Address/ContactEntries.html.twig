@@ -1,0 +1,21 @@
+{# Component displaying all email entries for a contact #}
+
+<h3>Addresses</h3>
+<ul>
+    {% if addresses %}
+        {% for address in addresses %}
+        <li>
+            {% if address.street %}{{address.street.name}}{% endif %}
+            {% if address.streetNumber %}{{address.streetNumber.number}}{% endif %}
+            <br>
+            {% if address.zipcode %}{{address.zipcode.zipcode}}{% endif %}
+            {% if address.city %}{{address.city.name}}{% endif %}
+            <br>
+            {% if address.country %}{{address.country.name}}{% endif %}
+        </li>
+        {% endfor %}
+    {% endif %}
+    <li>
+        <a href="{{path('app_address_new', {'contact': contact.id})}}">Add a new address</a>
+    </li>
+</ul>

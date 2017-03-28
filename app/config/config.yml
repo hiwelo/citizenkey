@@ -70,3 +70,15 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# Geocoder system
+bazinga_geocoder:
+    providers:
+        openstreetmap:
+            locale: null
+        google_maps:
+            locale: null
+            region: null
+            use_ssl: true
+            api_key: null
+    default_provider: google_maps

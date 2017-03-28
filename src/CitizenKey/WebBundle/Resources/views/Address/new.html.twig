@@ -1,0 +1,11 @@
+{% extends "WebBundle:Default:layout.html.twig" %}
+
+{% block title %}Add a new address{% endblock %}
+
+{% block body %}
+<h1>Add a new address to {{contact.name}}</h1>
+
+{{form_start(form)}}
+{{form_widget(form)}}
+{{form_end(form)}}
+{% endblock %}

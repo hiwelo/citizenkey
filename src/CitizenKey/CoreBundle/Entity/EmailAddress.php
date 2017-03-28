@@ -45,7 +45,7 @@ class EmailAddress
     /**
      * @var Person
      *
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="phones")
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="emails")
      */
     private $person;
 

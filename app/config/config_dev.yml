@@ -36,3 +36,6 @@ monolog:
 
 swiftmailer:
     disable_delivery: true
+
+bazinga_geocoder:
+    fake_ip: 123.345.643.133

@@ -108,6 +108,18 @@ class Person
      */
     private $phones;
 
+    /**
+     * @var array
+     * @ORM\OneToMany(targetEntity="EmailAddress", mappedBy="person")
+     */
+    private $emails;
+
+    /**
+     * @var array
+     * @ORM\OneToMany(targetEntity="Address", mappedBy="person")
+     */
+    private $addresses;
+
 
 
     /**
@@ -420,5 +432,73 @@ class Person
     public function getCreationDate()
     {
         return $this->creationDate;
+    }
+
+    /**
+     * Add email
+     *
+     * @param \CitizenKey\CoreBundle\Entity\EmailAddress $email
+     *
+     * @return Person
+     */
+    public function addEmail(\CitizenKey\CoreBundle\Entity\EmailAddress $email)
+    {
+        $this->emails[] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Remove email
+     *
+     * @param \CitizenKey\CoreBundle\Entity\EmailAddress $email
+     */
+    public function removeEmail(\CitizenKey\CoreBundle\Entity\EmailAddress $email)
+    {
+        $this->emails->removeElement($email);
+    }
+
+    /**
+     * Get emails
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmails()
+    {
+        return $this->emails;
+    }
+
+    /**
+     * Add address
+     *
+     * @param \CitizenKey\CoreBundle\Entity\Address $address
+     *
+     * @return Person
+     */
+    public function addAddress(\CitizenKey\CoreBundle\Entity\Address $address)
+    {
+        $this->addresses[] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Remove address
+     *
+     * @param \CitizenKey\CoreBundle\Entity\Address $address
+     */
+    public function removeAddress(\CitizenKey\CoreBundle\Entity\Address $address)
+    {
+        $this->addresses->removeElement($address);
+    }
+
+    /**
+     * Get addresses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
     }
 }
