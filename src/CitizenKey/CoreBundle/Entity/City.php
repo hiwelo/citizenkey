@@ -35,8 +35,7 @@ class City
      */
     private $country;
 
-
-    /**
+/**
      * Get id
      *
      * @return int

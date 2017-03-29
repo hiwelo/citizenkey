@@ -145,7 +145,7 @@ class AddressType extends AbstractType
             ])
             ->add('streetNumber', EntityType::class, [
                 'class' => 'CoreBundle:StreetNumber',
-                'choice_label' => 'name',
+                'choice_label' => 'number',
             ])
             ->add('create', SubmitType::class, ['label' => 'Add new'])
             ->addEventListener(FormEvents::PRE_SUBMIT, $geocoding);

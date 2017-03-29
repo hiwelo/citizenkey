@@ -12,5 +12,4 @@ class EmailControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/email/new');
     }
-
 }

@@ -12,5 +12,4 @@ class AddressControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/new');
     }
-
 }

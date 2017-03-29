@@ -38,8 +38,7 @@ class Country
      */
     private $name;
 
-
-    /**
+/**
      * Get id
      *
      * @return int

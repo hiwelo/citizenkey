@@ -35,8 +35,7 @@ class Street
      */
     private $city;
 
-
-    /**
+/**
      * Get id
      *
      * @return int

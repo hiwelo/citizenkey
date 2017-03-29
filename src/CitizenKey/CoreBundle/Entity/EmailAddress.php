@@ -49,8 +49,7 @@ class EmailAddress
      */
     private $person;
 
-
-    /**
+/**
      * Get id
      *
      * @return int

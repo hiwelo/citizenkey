@@ -19,5 +19,4 @@ class ContactControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/contact');
     }
-
 }

@@ -35,8 +35,7 @@ class ZipCode
      */
     private $country;
 
-
-    /**
+/**
      * Get id
      *
      * @return int

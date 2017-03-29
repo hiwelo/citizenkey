@@ -77,8 +77,7 @@ class Address
      */
     private $streetNumber;
 
-
-    /**
+/**
      * Get id
      *
      * @return int

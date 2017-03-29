@@ -120,9 +120,7 @@ class Person
      */
     private $addresses;
 
-
-
-    /**
+/**
      * Get id
      *
      * @return int
