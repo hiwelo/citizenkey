@@ -23,6 +23,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * Load the footer bar component into the template
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    public function footerAction()
+    {
+        return $this->render('WebBundle:Default:footer.html.twig', []);
+    }
+
+    /**
      * @Route("/login", name="app_login")
      *
      * @param  Request $request

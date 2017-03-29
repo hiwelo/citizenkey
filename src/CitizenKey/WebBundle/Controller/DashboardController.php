@@ -14,7 +14,8 @@ class DashboardController extends Controller
      */
     public function indexAction()
     {
-        $this->subscriptionCheck();
+        $this->denyAccessUnlessGranted('PLATFORM_USER');
+
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();

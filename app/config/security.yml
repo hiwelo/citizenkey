@@ -53,5 +53,5 @@ security:
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
     role_hierarchy:
-        ROLE_ADMIN:         [ROLE_TEAM, ROLE_USER]
-        ROLE_SUPERADMIN:    [ROLE_ADMIN]
+        ROLE_STAFF: [ROLE_USER]
+        ROLE_ADMIN: [ROLE_STAFF]

@@ -4,6 +4,7 @@
 
 {% block body %}
 <h1>Welcome {{ user.username }} to the dashboard</h1>
+{% if is_granted('ROLE_ADMIN') %}<p>You're admin.</p>{% endif %}
 <dl>
     <dt>Platform</dt>
     <dd><a href="{{ path('app_platform_dashboard') }}">{{ platform.name }}</a></dd>

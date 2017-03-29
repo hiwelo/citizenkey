@@ -18,6 +18,7 @@
         <main id="content">
             {% block body %}{% endblock %}
         </main>
+        {{ render(controller('WebBundle:Default:Footer')) }}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
