@@ -36,6 +36,8 @@ class PlatformController extends Controller
      */
     public function dashboardAction()
     {
+        $this->denyAccessUnlessGranted('PLATFORM_ADMIN');
+
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $platformID = $this->get('session')->get('platform');

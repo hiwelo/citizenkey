@@ -19,6 +19,8 @@ class AddressController extends Controller
      */
     public function newAction($contact, Request $request)
     {
+        $this->denyAccessUnlessGranted('PLATFORM_USER');
+
         $em = $this->getDoctrine()->getManager();
         $platforms = $em->getRepository('CoreBundle:Platform');
         $people = $em->getRepository('CoreBundle:Person');

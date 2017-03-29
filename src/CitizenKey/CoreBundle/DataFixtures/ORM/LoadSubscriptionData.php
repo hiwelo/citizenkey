@@ -21,9 +21,17 @@ class LoadSubscriptionData extends AbstractFixture implements OrderedFixtureInte
         $subscription->setPlatform($this->getReference('platform'));
         $subscription->setUser($this->getReference('user'));
         $subscription->setActive(true);
-        $subscription->setRoles(['ROLE_USER', 'ROLE_MANAGER', 'ROLE_ADMIN']);
+        $subscription->setRoles(['PLATFORM_ADMIN', 'PLATFORM_MANAGER', 'PLATFORM_USER']);
 
         $manager->persist($subscription);
+
+        $subscription2 = new Subscription();
+        $subscription2->setPlatform($this->getReference('platform'));
+        $subscription2->setUser($this->getReference('userTest'));
+        $subscription2->setActive(true);
+        $subscription2->setRoles(['PLATFORM_USER']);
+
+        $manager->persist($subscription2);
         $manager->flush();
 
         $this->setReference('subscription', $subscription);

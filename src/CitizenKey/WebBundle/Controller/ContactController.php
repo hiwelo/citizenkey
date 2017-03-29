@@ -19,6 +19,8 @@ class ContactController extends Controller
      */
     public function dashboardAction()
     {
+        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
+
         $em = $this->getDoctrine()->getManager();
 
         return $this->render('WebBundle:Contact:dashboard.html.twig', array(
@@ -35,6 +37,8 @@ class ContactController extends Controller
      */
     public function newAction(Request $request)
     {
+        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
+
         $em = $this->getDoctrine()->getManager();
         $platforms = $em->getRepository('CoreBundle:Platform');
         $platform = $platforms->find($this->get('session')->get('platform'));
@@ -71,6 +75,8 @@ class ContactController extends Controller
      */
     public function cardAction($contact)
     {
+        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
+
         $em = $this->getDoctrine()->getManager();
 
         $platforms = $em->getRepository('CoreBundle:Platform');
@@ -105,6 +111,8 @@ class ContactController extends Controller
      */
     public function editAction($contact, Request $request)
     {
+        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
+
         $em = $this->getDoctrine()->getManager();
 
         $platforms = $em->getRepository('CoreBundle:Platform');

@@ -10,3 +10,9 @@ services:
     web.form_authenticator:
         class: CitizenKey\WebBundle\Security\FormAuthenticator
         arguments: ["@doctrine.orm.entity_manager", "@router"]
+    web.generic_voter:
+        class: CitizenKey\WebBundle\Security\GenericVoter
+        arguments: ["@doctrine.orm.entity_manager", "@session", "@security.access.decision_manager"]
+        tags:
+            - { name: security.voter }
+        public: false

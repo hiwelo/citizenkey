@@ -81,6 +81,13 @@ class User implements UserInterface
     private $platforms;
 
     /**
+     * @var Subscription
+     *
+     * @ORM\OneToMany(targetEntity="Subscription", mappedBy="user")
+     */
+    private $subscriptions;
+
+    /**
      * Get id
      *
      * @return int
@@ -347,5 +354,39 @@ class User implements UserInterface
         }
 
         return $this->avatar;
+    }
+
+    /**
+     * Add subscription
+     *
+     * @param \CitizenKey\CoreBundle\Entity\Subscription $subscription
+     *
+     * @return User
+     */
+    public function addSubscription(\CitizenKey\CoreBundle\Entity\Subscription $subscription)
+    {
+        $this->subscriptions[] = $subscription;
+
+        return $this;
+    }
+
+    /**
+     * Remove subscription
+     *
+     * @param \CitizenKey\CoreBundle\Entity\Subscription $subscription
+     */
+    public function removeSubscription(\CitizenKey\CoreBundle\Entity\Subscription $subscription)
+    {
+        $this->subscriptions->removeElement($subscription);
+    }
+
+    /**
+     * Get subscriptions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubscriptions()
+    {
+        return $this->subscriptions;
     }
 }
