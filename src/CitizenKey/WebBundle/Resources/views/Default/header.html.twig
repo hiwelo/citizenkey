@@ -3,6 +3,9 @@
         <a class="banner__nav-link" href="{{path('app_dashboard')}}">Dashboard</a>
         <a class="banner__nav-link" href="{{path('app_platform_dashboard')}}">Platform</a>
         <a class="banner__nav-link" href="{{path('app_contacts')}}">Contacts</a>
+        {% if 'ROLE_ADMIN' in subscription.roles|keys %}
+            <a class="banner__nav-link" href="{{path('app_geography')}}">Geodata</a>
+        {% endif %}
     </nav>
 
     <div class="usernav">

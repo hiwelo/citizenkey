@@ -16,9 +16,22 @@ class DefaultController extends Controller
     public function headerAction()
     {
         $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+        $platformID = $this->get('session')->get('platform');
+        $platform = $em->getRepository('CoreBundle:Platform')->find($platformID);
+        $subscription = $em->getRepository('CoreBundle:Subscription')->findOneBy([
+            'platform' => $platform,
+            'user' => $user,
+        ]);
+
+        if (null === $platform || null === $subscription) {
+            return $this->redirectToRoute('app_platform_choice');
+        }
 
         return $this->render('WebBundle:Default:header.html.twig', [
             'user' => $user,
+            'subscription' => $subscription,
         ]);
     }
 
