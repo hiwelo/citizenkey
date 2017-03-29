@@ -77,7 +77,7 @@ class Address
      */
     private $streetNumber;
 
-/**
+    /**
      * Get id
      *
      * @return int
@@ -277,5 +277,15 @@ class Address
     public function getStreetNumber()
     {
         return $this->streetNumber;
+    }
+
+    /**
+     * Get Platform
+     *
+     * @return \CitizenKey\CoreBundle\Entity\Platform
+     */
+    public function getPlatform()
+    {
+        return $this->getPerson()->getPlatform();
     }
 }

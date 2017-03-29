@@ -10,7 +10,7 @@ class DashboardController extends Controller
     /**
      * @Route("/", name="app_dashboard")
      *
-     * @return void
+     * @return Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
