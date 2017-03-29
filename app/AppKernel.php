@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new CitizenKey\ApiBundle\ApiBundle(),
             new CitizenKey\CoreBundle\CoreBundle(),
             new CitizenKey\WebBundle\WebBundle(),
+            new CitizenKey\AddressFormatterBundle\AddressFormatterBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
