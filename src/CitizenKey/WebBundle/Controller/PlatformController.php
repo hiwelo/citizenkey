@@ -4,6 +4,9 @@ namespace CitizenKey\WebBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use CitizenKey\WebBundle\Form\UserType;
+use CitizenKey\CoreBundle\Entity\User;
 
 class PlatformController extends Controller
 {
@@ -81,5 +84,39 @@ class PlatformController extends Controller
         } else {
             return $this->redirectToRoute('app_platform_choice');
         }
+    }
+
+    /**
+     * @Route("/platform/user/add", name="app_platform_adduser")
+     *
+     * @param  string $platform platform id
+     * @return void
+     */
+    public function addUserAction(Request $request)
+    {
+        $this->denyAccessUnlessGranted('PLATFORM_ADMIN');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $user = new User();
+
+        $form = $this->createForm(UserType::class, $user, [
+            'em' => $this->getDoctrine()->getManager(),
+            'platform' => $this->get('session')->get('platform'),
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+            // $em->persist($address);
+            // $em->flush();
+            //
+            // return $this->redirectToRoute('app_contact', ['contact' => $person->getID()]);
+        }
+
+        return $this->render('WebBundle:Platform:adduser.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }
