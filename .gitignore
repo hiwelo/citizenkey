@@ -27,3 +27,6 @@ web/css/*
 !web/css/.gitkeep
 web/js/*
 !web/js/.gitkeep
+
+# Address Formatting Bundle has a custom repository
+src/CitizenKey/AddressFormatterBundle
