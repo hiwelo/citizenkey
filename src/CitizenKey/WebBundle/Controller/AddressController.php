@@ -100,7 +100,8 @@ class AddressController extends Controller
         $formattedAddress = $formatter->load([
             'countryCode' => $address->getCountry()->getCode(),
             'countryName' => $address->getCountry()->getName(),
-            'region' => '',
+            'regionName' => $address->getAdminLevel1()->getName(),
+            'regionCode' => $address->getAdminLevel1()->getCode(),
             'locality' => $address->getCity()->getName(),
             'postalcode' => $address->getZipcode()->getZipcode(),
             'street' => $address->getStreet()->getName(),
