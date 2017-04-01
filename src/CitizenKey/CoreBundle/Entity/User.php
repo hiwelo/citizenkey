@@ -88,6 +88,15 @@ class User implements UserInterface
     private $subscriptions;
 
     /**
+     * Locale preference for this user
+     *
+     * @var string
+     *
+     * @ORM\Column(name="locale", type="string", length=40)
+     */
+    private $locale = "en";
+
+    /**
      * Get id
      *
      * @return int
@@ -388,5 +397,29 @@ class User implements UserInterface
     public function getSubscriptions()
     {
         return $this->subscriptions;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return User
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }
