@@ -5,13 +5,7 @@
     {% if addresses %}
         {% for address in addresses %}
         <li>
-            {% if address.street %}{{address.street.name}}{% endif %}
-            {% if address.streetNumber %}{{address.streetNumber.number}}{% endif %}
-            <br>
-            {% if address.zipcode %}{{address.zipcode.zipcode}}{% endif %}
-            {% if address.city %}{{address.city.name}}{% endif %}
-            <br>
-            {% if address.country %}{{address.country.name}}{% endif %}
+            {{render(controller('WebBundle:Address:getInlineAddress', {'address': address.id}))}}
         </li>
         {% endfor %}
     {% endif %}

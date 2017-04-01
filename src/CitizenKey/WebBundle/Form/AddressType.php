@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use CitizenKey\CoreBundle\Entity\Address;
+use CitizenKey\CoreBundle\Entity\AdminLevel;
 use CitizenKey\CoreBundle\Entity\Country;
 use CitizenKey\CoreBundle\Entity\ZipCode;
 use CitizenKey\CoreBundle\Entity\City;
@@ -67,17 +68,47 @@ class AddressType extends AbstractType
             }
             $form['zipcode'] = $zipcode->getID();
 
+            // We search if the administrative level exists, if not we create it
+            $levels = $address->getAdminLevels();
+            foreach ($levels as $key => $level) {
+                $adminLevel = $em->getRepository('CoreBundle:AdminLevel')->findOneBy(
+                    [
+                        'code' => $level->getCode(),
+                        'country' => $country,
+                    ]
+                );
+
+                if (is_null($adminLevel)) {
+                    $adminLevel = new AdminLevel();
+                    $adminLevel->setLevel($level->getLevel());
+                    $adminLevel->setName($level->getName());
+                    $adminLevel->setCode($level->getCode());
+                    $adminLevel->setCountry($country);
+                    $em->persist($adminLevel);
+                    $em->flush();
+                }
+                $form['adminLevel'.$key] = $adminLevel->getID();
+            }
+
+            // We look if we have a locality and/or a sublocality,
+            // and we choose one of this two
+            if (!$address->getLocality() && $address->getSubLocality()) {
+                $localityName = $address->getSubLocality();
+            } else {
+                $localityName = $address->getLocality();
+            }
+
             // We search if the city exists, if not we create it
             $city = $em->getRepository('CoreBundle:City')->findOneBy(
                 [
-                    'name' => $address->getLocality(),
+                    'name' => $localityName,
                     'country' => $country,
                 ]
             );
 
             if (is_null($city)) {
                 $city = new City();
-                $city->setName($address->getLocality());
+                $city->setName($localityName);
                 $city->setCountry($country);
                 $em->persist($city);
                 $em->flush();
@@ -137,6 +168,14 @@ class AddressType extends AbstractType
             ])
             ->add('city', EntityType::class, [
                 'class' => 'CoreBundle:City',
+                'choice_label' => 'name',
+            ])
+            ->add('adminLevel1', EntityType::class, [
+                'class' => 'CoreBundle:AdminLevel',
+                'choice_label' => 'name',
+            ])
+            ->add('adminLevel2', EntityType::class, [
+                'class' => 'CoreBundle:AdminLevel',
                 'choice_label' => 'name',
             ])
             ->add('street', EntityType::class, [

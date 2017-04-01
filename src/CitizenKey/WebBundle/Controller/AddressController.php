@@ -90,4 +90,30 @@ class AddressController extends Controller
             'addresses' => $addresses,
         ]);
     }
+
+    public function getInlineAddressAction($address)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $address = $em->getRepository('CoreBundle:Address')->find($address);
+
+        $formatter = $this->get('address.formatter');
+        $formattedAddress = $formatter->load([
+            'countryCode' => $address->getCountry()->getCode(),
+            'countryName' => $address->getCountry()->getName(),
+            'region' => '',
+            'locality' => $address->getCity()->getName(),
+            'postalcode' => $address->getZipcode()->getZipcode(),
+            'street' => $address->getStreet()->getName(),
+            'streetNumber' => $address->getStreetNumber()->getNumber(),
+        ]);
+
+        $result = $formatter->format($formattedAddress, [
+            'country' => true,
+            'inline' => true,
+        ]);
+
+        return $this->render('WebBundle:Address:address.html.twig', [
+            'address' => $result,
+        ]);
+    }
 }

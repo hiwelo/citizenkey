@@ -78,6 +78,20 @@ class Address
     private $streetNumber;
 
     /**
+     * @var AdminLevel
+     *
+     * @ORM\ManyToOne(targetEntity="AdminLevel")
+     */
+    private $adminLevel1;
+
+    /**
+     * @var AdminLevel
+     *
+     * @ORM\ManyToOne(targetEntity="AdminLevel")
+     */
+    private $adminLevel2;
+
+    /**
      * Get id
      *
      * @return int
@@ -287,5 +301,53 @@ class Address
     public function getPlatform()
     {
         return $this->getPerson()->getPlatform();
+    }
+
+    /**
+     * Set adminLevel1
+     *
+     * @param \CitizenKey\CoreBundle\Entity\AdminLevel $adminLevel1
+     *
+     * @return Address
+     */
+    public function setAdminLevel1(\CitizenKey\CoreBundle\Entity\AdminLevel $adminLevel1 = null)
+    {
+        $this->adminLevel1 = $adminLevel1;
+
+        return $this;
+    }
+
+    /**
+     * Get adminLevel1
+     *
+     * @return \CitizenKey\CoreBundle\Entity\AdminLevel
+     */
+    public function getAdminLevel1()
+    {
+        return $this->adminLevel1;
+    }
+
+    /**
+     * Set adminLevel2
+     *
+     * @param \CitizenKey\CoreBundle\Entity\AdminLevel $adminLevel2
+     *
+     * @return Address
+     */
+    public function setAdminLevel2(\CitizenKey\CoreBundle\Entity\AdminLevel $adminLevel2 = null)
+    {
+        $this->adminLevel2 = $adminLevel2;
+
+        return $this;
+    }
+
+    /**
+     * Get adminLevel2
+     *
+     * @return \CitizenKey\CoreBundle\Entity\AdminLevel
+     */
+    public function getAdminLevel2()
+    {
+        return $this->adminLevel2;
     }
 }
