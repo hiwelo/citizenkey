@@ -30,7 +30,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "giggsey/libphonenumber-for-php": "8.3.3.1",
         "misd/phone-number-bundle": "^1.2",
-        "willdurand/geocoder-bundle": "^4.1"
+        "willdurand/geocoder-bundle": "^4.1",
+        "hiwelo/address-formatter-bundle": "1.0-alpha"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
