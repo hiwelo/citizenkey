@@ -30,5 +30,6 @@ web/js/*
 
 # Address Formatting Bundle has a custom repository
 src/CitizenKey/AddressFormatterBundle
+src/CitizenKey/ApiBundle
 src/CitizenKey/CoreBundle
 src/CitizenKey/WebBundle
