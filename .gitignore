@@ -28,8 +28,11 @@ web/css/*
 web/js/*
 !web/js/.gitkeep
 
-# Address Formatting Bundle has a custom repository
+# Some bundles have a custom repository
 src/CitizenKey/AddressFormatterBundle
 src/CitizenKey/ApiBundle
 src/CitizenKey/CoreBundle
 src/CitizenKey/WebBundle
+
+# The template have a custom repository too
+web-assets
