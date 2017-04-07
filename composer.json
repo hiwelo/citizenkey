@@ -31,7 +31,10 @@
         "giggsey/libphonenumber-for-php": "8.3.3.1",
         "misd/phone-number-bundle": "^1.2",
         "willdurand/geocoder-bundle": "^4.1",
-        "hiwelo/address-formatter-bundle": "1.0-alpha"
+        "hiwelo/address-formatter-bundle": "1.0-alpha",
+        "citizenkey/web-bundle": "dev-master",
+        "citizenkey/api-bundle": "dev-master",
+        "citizenkey/core-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -41,6 +44,20 @@
         "phpunit/phpunit": "^6.0",
         "endouble/symfony3-custom-coding-standard": "^2.16"
     },
+    "repositories": [
+      {
+        "type": "vcs",
+        "url": "https://git.raccoon.studio/citizenkey/api-bundle"
+      },
+      {
+        "type": "vcs",
+        "url": "https://git.raccoon.studio/citizenkey/core-bundle"
+      },
+      {
+        "type": "vcs",
+        "url": "https://git.raccoon.studio/citizenkey/web-bundle"
+      }
+    ],
     "scripts": {
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",

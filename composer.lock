@@ -4,8 +4,96 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "97411d7db30d8178a5c8698123bf9481",
+    "content-hash": "b2090cbebe11ca7dfdaff41bb56b680a",
     "packages": [
+        {
+            "name": "citizenkey/api-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://git.raccoon.studio/citizenkey/api-bundle",
+                "reference": "5f940df39cfb407dee652edcd359b2a8d7ff4427"
+            },
+            "type": "symfony-bundle",
+            "authors": [
+                {
+                    "name": "Damien Senger",
+                    "email": "damien@raccoon.studio"
+                }
+            ],
+            "description": "CitizenKey Symfony API bundle containing all controller and resources used by the API of the project",
+            "time": "2017-04-03 19:47:19"
+        },
+        {
+            "name": "citizenkey/core-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://git.raccoon.studio/citizenkey/core-bundle",
+                "reference": "b4ce2c77f019ae70a765c04915c697db5be04189"
+            },
+            "require": {
+                "php": "~5.5|~7.0",
+                "symfony/symfony": "~2.8|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "CitizenKey\\CoreBundle\\": ""
+                }
+            },
+            "authors": [
+                {
+                    "name": "Damien Senger",
+                    "email": "damien@raccoon.studio"
+                }
+            ],
+            "description": "CitizenKey Symfony Core bundle containing all resources and entities used by the API and the Web project",
+            "keywords": [
+                "bundle",
+                "symfony",
+                "symfony-bundle"
+            ],
+            "time": "2017-04-03 19:40:50"
+        },
+        {
+            "name": "citizenkey/web-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://git.raccoon.studio/citizenkey/web-bundle",
+                "reference": "485e775a9b47dae8bf109451cf8711ac4268bc04"
+            },
+            "require": {
+                "php": "~5.5|~7.0",
+                "symfony/symfony": "~2.8|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Hiwelo\\AddressFormatterBundle\\": ""
+                }
+            },
+            "authors": [
+                {
+                    "name": "Damien Senger",
+                    "email": "damien@raccoon.studio"
+                }
+            ],
+            "description": "CitizenKey Symfony Web bundle containing all controllers, resources and entities used by the Web project",
+            "keywords": [
+                "bundle",
+                "symfony",
+                "symfony-bundle"
+            ],
+            "time": "2017-04-06 17:39:16"
+        },
         {
             "name": "composer/ca-bundle",
             "version": "1.0.7",
@@ -4217,7 +4305,10 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "hiwelo/address-formatter-bundle": 15
+        "hiwelo/address-formatter-bundle": 15,
+        "citizenkey/web-bundle": 20,
+        "citizenkey/api-bundle": 20,
+        "citizenkey/core-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
