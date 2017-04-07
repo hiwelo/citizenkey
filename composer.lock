@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5fc707af3c84ef38c9c1a105d3e817a8",
+    "content-hash": "566a0d72d56a7f1843f71ae80d051865",
     "packages": [
         {
             "name": "citizenkey/api-bundle",
@@ -93,6 +93,32 @@
                 "symfony-bundle"
             ],
             "time": "2017-04-06 17:39:16"
+        },
+        {
+            "name": "citizenkey/web-template",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://git.raccoon.studio/citizenkey/citizenkey-theme",
+                "reference": "aa1068ddc64e8821c17749c7b499cafe14f9231a"
+            },
+            "require": {
+                "composer/installers": "~1.2.0"
+            },
+            "type": "citizenkey-template",
+            "authors": [
+                {
+                    "name": "Damien Senger",
+                    "email": "damien@raccoon.studio"
+                }
+            ],
+            "description": "CitizenKey template for the Symfony Web bundle",
+            "keywords": [
+                "citizenkey",
+                "citizenkey-template",
+                "template"
+            ],
+            "time": "2017-04-07 10:04:32"
         },
         {
             "name": "composer/ca-bundle",
@@ -4521,7 +4547,8 @@
         "hiwelo/address-formatter-bundle": 15,
         "citizenkey/web-bundle": 20,
         "citizenkey/api-bundle": 20,
-        "citizenkey/core-bundle": 20
+        "citizenkey/core-bundle": 20,
+        "citizenkey/web-template": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

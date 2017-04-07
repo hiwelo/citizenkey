@@ -35,7 +35,8 @@
         "hiwelo/address-formatter-bundle": "1.0-alpha",
         "citizenkey/web-bundle": "dev-master",
         "citizenkey/api-bundle": "dev-master",
-        "citizenkey/core-bundle": "dev-master"
+        "citizenkey/core-bundle": "dev-master",
+        "citizenkey/web-template": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -57,6 +58,10 @@
       {
         "type": "vcs",
         "url": "https://git.raccoon.studio/citizenkey/web-bundle"
+      },
+      {
+        "type": "vcs",
+        "url": "https://git.raccoon.studio/citizenkey/citizenkey-theme"
       }
     ],
     "scripts": {
