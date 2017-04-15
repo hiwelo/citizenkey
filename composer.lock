@@ -4,33 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "566a0d72d56a7f1843f71ae80d051865",
+    "content-hash": "905f5301cfe928721836a828178ad4c8",
     "packages": [
-        {
-            "name": "citizenkey/api-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://git.raccoon.studio/citizenkey/api-bundle",
-                "reference": "5f940df39cfb407dee652edcd359b2a8d7ff4427"
-            },
-            "type": "symfony-bundle",
-            "authors": [
-                {
-                    "name": "Damien Senger",
-                    "email": "damien@raccoon.studio"
-                }
-            ],
-            "description": "CitizenKey Symfony API bundle containing all controller and resources used by the API of the project",
-            "time": "2017-04-03 19:47:19"
-        },
         {
             "name": "citizenkey/core-bundle",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://git.raccoon.studio/citizenkey/core-bundle",
-                "reference": "b4ce2c77f019ae70a765c04915c697db5be04189"
+                "reference": "5c3c4efa1f16206044ac4e739a63233628df768c"
             },
             "require": {
                 "php": "~5.5|~7.0",
@@ -57,68 +39,7 @@
                 "symfony",
                 "symfony-bundle"
             ],
-            "time": "2017-04-03 19:40:50"
-        },
-        {
-            "name": "citizenkey/web-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://git.raccoon.studio/citizenkey/web-bundle",
-                "reference": "485e775a9b47dae8bf109451cf8711ac4268bc04"
-            },
-            "require": {
-                "php": "~5.5|~7.0",
-                "symfony/symfony": "~2.8|~3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Hiwelo\\AddressFormatterBundle\\": ""
-                }
-            },
-            "authors": [
-                {
-                    "name": "Damien Senger",
-                    "email": "damien@raccoon.studio"
-                }
-            ],
-            "description": "CitizenKey Symfony Web bundle containing all controllers, resources and entities used by the Web project",
-            "keywords": [
-                "bundle",
-                "symfony",
-                "symfony-bundle"
-            ],
-            "time": "2017-04-06 17:39:16"
-        },
-        {
-            "name": "citizenkey/web-template",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://git.raccoon.studio/citizenkey/citizenkey-theme",
-                "reference": "aa1068ddc64e8821c17749c7b499cafe14f9231a"
-            },
-            "require": {
-                "composer/installers": "~1.2.0"
-            },
-            "type": "citizenkey-template",
-            "authors": [
-                {
-                    "name": "Damien Senger",
-                    "email": "damien@raccoon.studio"
-                }
-            ],
-            "description": "CitizenKey template for the Symfony Web bundle",
-            "keywords": [
-                "citizenkey",
-                "citizenkey-template",
-                "template"
-            ],
-            "time": "2017-04-07 10:04:32"
+            "time": "2017-04-09 19:35:57"
         },
         {
             "name": "composer/ca-bundle",
@@ -1204,16 +1125,16 @@
         },
         {
             "name": "giggsey/locale",
-            "version": "1.2",
+            "version": "1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/Locale.git",
-                "reference": "640911276e24729c276ea6206a4e0318474d24f5"
+                "reference": "e6eb1883c1452df7734a03fb183a2ec5175c16f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/Locale/zipball/640911276e24729c276ea6206a4e0318474d24f5",
-                "reference": "640911276e24729c276ea6206a4e0318474d24f5",
+                "url": "https://api.github.com/repos/giggsey/Locale/zipball/e6eb1883c1452df7734a03fb183a2ec5175c16f2",
+                "reference": "e6eb1883c1452df7734a03fb183a2ec5175c16f2",
                 "shasum": ""
             },
             "require": {
@@ -1249,7 +1170,7 @@
                 }
             ],
             "description": "Locale functions required by libphonenumber-for-php",
-            "time": "2017-03-21T16:08:07+00:00"
+            "time": "2017-04-07T18:45:42+00:00"
         },
         {
             "name": "hiwelo/address-formatter-bundle",
@@ -2997,16 +2918,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe"
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/5a5a9fc8025a08d8919be87d6884d5a92520cefe",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
                 "shasum": ""
             },
             "require": {
@@ -3035,7 +2956,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-01-26T22:05:40+00:00"
+            "time": "2017-04-12T18:52:22+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -3350,16 +3271,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "5.1.0",
+            "version": "5.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "cff36444733ac6d3f153866f55898373ca184610"
+                "reference": "bc433b7af27e0ab9b6b4c6d8ec918a493875f6bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/cff36444733ac6d3f153866f55898373ca184610",
-                "reference": "cff36444733ac6d3f153866f55898373ca184610",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/bc433b7af27e0ab9b6b4c6d8ec918a493875f6bc",
+                "reference": "bc433b7af27e0ab9b6b4c6d8ec918a493875f6bc",
                 "shasum": ""
             },
             "require": {
@@ -3409,7 +3330,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-04-07T04:39:58+00:00"
+            "time": "2017-04-12T07:59:32+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -4545,10 +4466,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "hiwelo/address-formatter-bundle": 15,
-        "citizenkey/web-bundle": 20,
-        "citizenkey/api-bundle": 20,
-        "citizenkey/core-bundle": 20,
-        "citizenkey/web-template": 20
+        "citizenkey/core-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

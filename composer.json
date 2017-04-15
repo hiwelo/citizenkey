@@ -33,10 +33,7 @@
         "misd/phone-number-bundle": "^1.2",
         "willdurand/geocoder-bundle": "^4.1",
         "hiwelo/address-formatter-bundle": "1.0-alpha",
-        "citizenkey/web-bundle": "dev-master",
-        "citizenkey/api-bundle": "dev-master",
-        "citizenkey/core-bundle": "dev-master",
-        "citizenkey/web-template": "dev-master"
+        "citizenkey/core-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
