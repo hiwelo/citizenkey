@@ -91,11 +91,18 @@ class AddressController extends Controller
         ]);
     }
 
-    public function getInlineAddressAction($address)
+    /**
+     * Returns inline address template
+     *
+     * @param string $addressID Asked address ID
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    public function getInlineAddressAction($addressID)
     {
         $em = $this->getDoctrine()->getManager();
         $address = $em->getRepository('CoreBundle:Address')
-            ->find($address);
+            ->find($addressID);
 
         try {
             $formattedAddress = $this->get('citizenkey.address')
