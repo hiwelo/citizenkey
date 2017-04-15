@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "905f5301cfe928721836a828178ad4c8",
+    "content-hash": "4dcdc5383088fb1c4140c2b86775f877",
     "packages": [
         {
             "name": "citizenkey/core-bundle",
@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.raccoon.studio/citizenkey/core-bundle",
-                "reference": "5c3c4efa1f16206044ac4e739a63233628df768c"
+                "reference": "ff8b114401eb93d81fe6a831c411d199eb2ad108"
             },
             "require": {
                 "php": "~5.5|~7.0",
@@ -39,7 +39,7 @@
                 "symfony",
                 "symfony-bundle"
             ],
-            "time": "2017-04-09 19:35:57"
+            "time": "2017-04-15 23:44:38"
         },
         {
             "name": "composer/ca-bundle",

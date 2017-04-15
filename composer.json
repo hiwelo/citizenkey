@@ -46,19 +46,7 @@
     "repositories": [
       {
         "type": "vcs",
-        "url": "https://git.raccoon.studio/citizenkey/api-bundle"
-      },
-      {
-        "type": "vcs",
         "url": "https://git.raccoon.studio/citizenkey/core-bundle"
-      },
-      {
-        "type": "vcs",
-        "url": "https://git.raccoon.studio/citizenkey/web-bundle"
-      },
-      {
-        "type": "vcs",
-        "url": "https://git.raccoon.studio/citizenkey/citizenkey-theme"
       }
     ],
     "scripts": {
@@ -71,10 +59,12 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "vendor/bin/phpcs --config-set installed_paths ../../endouble/symfony3-custom-coding-standard"
         ],
         "post-update-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "vendor/bin/phpcs --config-set installed_paths ../../endouble/symfony3-custom-coding-standard"
         ],
         "lint": [
             "./vendor/bin/phpcs --standard=Symfony3Custom ./src"
