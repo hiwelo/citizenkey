@@ -7,8 +7,3 @@ citizen_key_core:
     resource: "@CoreBundle/Controller/"
     type:     annotation
     prefix:   /
-
-citizen_key_api:
-    resource: "@ApiBundle/Controller/"
-    type:     annotation
-    prefix:   /api/v1
