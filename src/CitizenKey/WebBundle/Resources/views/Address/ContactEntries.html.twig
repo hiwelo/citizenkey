@@ -1,0 +1,15 @@
+{# Component displaying all email entries for a contact #}
+
+<h3>Addresses</h3>
+<ul>
+    {% if addresses %}
+        {% for address in addresses %}
+        <li>
+            {{render(controller('WebBundle:Address:getInlineAddress', {'address': address.id}))}}
+        </li>
+        {% endfor %}
+    {% endif %}
+    <li>
+        <a href="{{path('app_address_new', {'contact': contactID})}}">Add a new address</a>
+    </li>
+</ul>

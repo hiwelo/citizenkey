@@ -1,0 +1,14 @@
+{% extends "WebBundle:Default:layout.html.twig" %}
+
+{% block title %}Edit a new address{% endblock %}
+
+{% block body %}
+<h1>
+    Edit a new address to
+    <a href="{{path('app_contact', {'contact': contact.ID})}}">{{contact.name}}</a>
+</h1>
+
+{{form_start(form)}}
+{{form_widget(form)}}
+{{form_end(form)}}
+{% endblock %}

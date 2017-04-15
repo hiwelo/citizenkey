@@ -32,4 +32,3 @@ web/js/*
 src/CitizenKey/AddressFormatterBundle
 src/CitizenKey/ApiBundle
 src/CitizenKey/CoreBundle
-src/CitizenKey/WebBundle

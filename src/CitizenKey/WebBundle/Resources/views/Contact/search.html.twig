@@ -1,0 +1,14 @@
+{% extends "WebBundle:Default:layout.html.twig" %}
+
+{% block title %}Contacts search{% endblock %}
+
+{% block body %}
+<h1>Contacts search</h1>
+
+<div class="results">
+    {% for card in cards %}
+        {{render(controller('WebBundle:Contact:smallCard', {'card': card}))}}
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{
+    "name": "citizenkey/web-bundle",
+    "description": "CitizenKey Symfony Web bundle containing all controllers, resources and entities used by the Web project",
+    "type": "symfony-bundle",
+    "keywords": ["symfony", "symfony-bundle", "bundle"],
+    "authors": [
+        {
+            "name": "Damien Senger",
+            "email": "damien@raccoon.studio"
+        }
+    ],
+    "require": {
+      "php": "~5.5|~7.0",
+      "symfony/symfony": "~2.8|~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8"
+    },
+    "autoload": {
+        "psr-4": {"Hiwelo\\AddressFormatterBundle\\": ""}
+    }
+}

@@ -1,0 +1,12 @@
+{% extends "WebBundle:Default:layout.html.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+<h1>{{'dashboard.title'|trans}}</h1>
+{% if is_granted('ROLE_ADMIN') %}<p>You're admin.</p>{% endif %}
+<dl>
+    <dt>{{'platform.title'|trans}}</dt>
+    <dd><a href="{{ path('app_platform_dashboard') }}">{{ platform.name }}</a></dd>
+</dl>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <form action="{{ path('app_login_check') }}" method="POST">
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="abc@domain.ext">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </body>
+</html>

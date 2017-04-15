@@ -1,0 +1,24 @@
+<header class="banner" id="banner">
+    <nav class="banner__nav">
+        <a class="banner__nav-link" href="{{path('app_dashboard')}}">
+            {{'dashboard.title'|trans}}
+        </a>
+        <a class="banner__nav-link" href="{{path('app_platform_dashboard')}}">
+            {{'platform.title'|trans}}
+        </a>
+        <a class="banner__nav-link" href="{{path('app_contacts')}}">
+            {{'contacts.title'|trans}}
+        </a>
+        {% if 'ROLE_ADMIN' in subscription.roles|keys %}
+            <a class="banner__nav-link" href="{{path('app_geography')}}">
+                {{'geodata.title'|trans}}
+            </a>
+        {% endif %}
+    </nav>
+
+    <div class="usernav">
+        <button class="usernav__button">
+            <img class="usernav__avatar" src="{{user.avatar}}" alt="">
+        </button>
+    </div>
+</header>
