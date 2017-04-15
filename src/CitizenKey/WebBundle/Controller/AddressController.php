@@ -25,38 +25,7 @@ class AddressController extends Controller
     {
         $this->denyAccessUnlessGranted('PLATFORM_USER');
 
-        $em = $this->getDoctrine()->getManager();
-        $platforms = $em->getRepository('CoreBundle:Platform');
-        $people = $em->getRepository('CoreBundle:Person');
-
-        $platform = $platforms->find($this->get('session')->get('platform'));
-        $person = $people->findOneBy([
-            'platform' => $platform,
-            'id' => $contact,
-        ]);
-
-        $address = new Address();
-        $address->setPerson($person);
-
-        $form = $this->createForm(AddressType::class, $address, [
-            'geocoder' => $this->container->get('bazinga_geocoder.geocoder'),
-            'em' => $this->getDoctrine()->getManager(),
-        ]);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $address = $form->getData();
-            $em->persist($address);
-            $em->flush();
-
-            return $this->redirectToRoute('app_contact', ['contact' => $person->getID()]);
-        }
-
-        return $this->render('WebBundle:Address:new.html.twig', [
-            'contact' => $person,
-            'form' => $form->createView(),
-        ]);
+        return $this->saveAddress($contact, null, $request);
     }
 
     /**
@@ -72,38 +41,9 @@ class AddressController extends Controller
      */
     public function editAction($contactID, $addressID, Request $request)
     {
-        $this->denyAccessUnlessGranted('PLATFORM_USER');
+        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
 
-        $em = $this->getDoctrine()->getManager();
-        $address = $em->getRepository('CoreBundle:Address')->find($addressID);
-
-        if (!$address instanceof Address) {
-            return $this->redirectToRoute('app_contacts');
-        }
-
-        if ($address->getPerson()->getID() != $contactID) {
-            return $this->redirectToRoute('app_contact', ['contact' => $contactID]);
-        }
-
-        $form = $this->createForm(AddressType::class, $address, [
-            'geocoder' => $this->container->get('bazinga_geocoder.geocoder'),
-            'em' => $this->getDoctrine()->getManager(),
-        ]);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $address = $form->getData();
-            $em->persist($address);
-            $em->flush();
-
-            return $this->redirectToRoute('app_contact', ['contact' => $person->getID()]);
-        }
-
-        return $this->render('WebBundle:Address:edit.html.twig', [
-            'contact' => $address->getPerson(),
-            'form' => $form->createView(),
-        ]);
+        return $this->saveAddress($contactID, $addressID, $request);
     }
 
     /**
@@ -127,7 +67,7 @@ class AddressController extends Controller
             return $this->redirectToRoute('app_contacts');
         }
 
-        return $this->redirectToRoute('app_contact', ['contact' => $contactID]);
+        return $this->redirectToRoute('app_contact', ['contactID' => $contactID]);
     }
 
     /**
@@ -168,5 +108,36 @@ class AddressController extends Controller
             'address' => $address,
             'formattedAddress' => $formattedAddress,
         ]);
+    }
+
+    /**
+     * Creates or updates an address entry with the asked informations
+     *
+     * @param string  $contactID Contact ID
+     * @param string  $addressID Address entry ID
+     * @param Request $request   Request object
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    private function saveAddress($contactID, $addressID = null, Request $request)
+    {
+        try {
+            $address = $this->get('citizenkey.address')->save($contactID, $addressID, $request);
+        } catch (NotFoundHttpException $e) {
+            return $this->redirectToRoute('app_contacts');
+        }
+
+        if ($address instanceof Address) {
+            return $this->redirectToRoute('app_contact', [
+                'contactID' => $address->getPerson()->getID(),
+            ]);
+        }
+
+        if (is_array($address)) {
+            return $this->render('WebBundle:Address:new.html.twig', [
+                'contact' => $address['address']->getPerson(),
+                'form' => $address['form']->createView(),
+            ]);
+        }
     }
 }
