@@ -1,0 +1,63 @@
+/**
+ * CitizenKey colors
+ *
+ * @author  Damien Senger <damien@raccoon.studio>
+ * @version 1.0
+ */
+
+
+/**
+ * Summary
+ *
+ * 1. Brand colors
+ * 2. Generic colors
+ * 3. Project variables, semantic color scheme
+ */
+
+
+/**
+ * 1. Brand colors
+ */
+
+$color-dark-cerulean:           rgba(21, 74, 128, 1) !default;
+$color-rich-electric-blue:      rgba(0, 153, 208, 1) !default;
+$color-cornflower-blue:         rgba(98, 179, 224, 1) !default;
+$color-beau-blue:               rgba(199, 218, 233, 1) !default;
+$color-carnelian:               rgba(175, 33, 23, 1) !default;
+
+
+/**
+ * 2. Generic colors
+ */
+
+$color-white:                   rgba(255, 255, 255, 1) !default;
+$color-black:                   rgba(0, 0, 0, 1) !default;
+
+$color-red:                     #d9534f !default;
+$color-orange:                  #f0ad4e !default;
+$color-yellow:                  #ffd500 !default;
+$color-green:                   #5cb85c !default;
+$color-blue:                    #0275d8 !default;
+$color-teal:                    #5bc0de !default;
+$color-pink:                    #ff5b77 !default;
+$color-purple:                  #613d7c !default;
+
+$color-gray-dark:               lighten($color-black, 15%) !default;
+$color-gray:                    lighten($color-gray-dark, 15%) !default;
+$color-gray-light:              lighten($color-gray, 15%) !default;
+$color-gray-lighter:            lighten($color-gray-light, 45%) !default;
+$color-gray-lightest:           lighten($color-gray-lighter, 8%) !default;
+
+
+
+/**
+ * 3. Project variables
+ */
+
+$color-brand-primary:           $color-rich-electric-blue !default;
+$color-brand-a11y:              $color-dark-cerulean !default;
+$color-success:                 $color-green !default;
+$color-info:                    $color-teal !default;
+$color-warning:                 $color-orange !default;
+$color-danger:                  $color-red !default;
+$color-inverse:                 $color-gray-dark !default;

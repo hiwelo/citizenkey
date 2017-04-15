@@ -1,0 +1,15 @@
+{
+    "name": "citizenkey/web-template",
+    "description": "CitizenKey template for the Symfony Web bundle",
+    "type": "citizenkey-template",
+    "keywords": ["citizenkey", "citizenkey-template", "template"],
+    "authors": [
+        {
+            "name": "Damien Senger",
+            "email": "damien@raccoon.studio"
+        }
+    ],
+    "require": {
+      "composer/installers": "~1.2.0"
+    }
+}

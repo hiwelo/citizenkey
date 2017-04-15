@@ -1,0 +1,46 @@
+/**
+ * CitizenKey accessibility mixins
+ *
+ * @author  Damien Senger <damien@raccoon.studio>
+ * @version 1.0
+ */
+
+
+/**
+ * Only display content for screen readers
+ *
+ * @link https://github.com/twbs/bootstrap/blob/v4-dev/scss/utilities/_screenreaders.scss
+ * @link http://a11yproject.com/posts/how-to-hide-content
+ * @link http://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+ */
+@mixin sr-only {
+  position: absolute;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  width: 1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+
+/**
+ * Only display content when it's focused, in conjonction with .sr-only
+ *
+ * @link https://github.com/twbs/bootstrap/blob/v4-dev/scss/utilities/_screenreaders.scss
+ * @link https://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+ */
+@mixin sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    height: auto;
+    overflow: visible;
+    width: auto;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+  }
+}

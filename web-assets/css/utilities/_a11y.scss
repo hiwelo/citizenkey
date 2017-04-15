@@ -1,0 +1,22 @@
+/**
+ * CitizenKey accessibility utilities
+ *
+ * @author  Damien Senger <damien@raccoon.studio>
+ * @version 1.0
+ */
+
+
+/**
+ * Hides a content, except for screen readers
+ */
+.sr-only {
+  @include sr-only();
+}
+
+
+/**
+ * Displays content when it's focused, in conjonction with .sr-only
+ */
+.sr-only-focusable {
+  @include sr-only-focusable();
+}

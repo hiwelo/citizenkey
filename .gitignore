@@ -33,6 +33,3 @@ src/CitizenKey/AddressFormatterBundle
 src/CitizenKey/ApiBundle
 src/CitizenKey/CoreBundle
 src/CitizenKey/WebBundle
-
-# The template have a custom repository too
-web-assets
