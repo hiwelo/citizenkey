@@ -14,7 +14,7 @@ class EmailAddressController extends Controller
     /**
      * Creates a new email entry for a contact
      *
-     * @Route("/contact/{contact}/email/new/", name="app_email_new")
+     * @Route("/contact/{contactID}/email/new/", name="app_email_new")
      *
      * @param string  $contactID Contact ID
      * @param Request $request   Request object
@@ -31,7 +31,7 @@ class EmailAddressController extends Controller
     /**
      * Updates an existing email entry for an asked contact
      *
-     * @Route("/contact/{contact}/email/{emailID}/edit", name="app_email_new")
+     * @Route("/contact/{contact}/email/{emailID}/edit", name="app_email_edit")
      *
      * @param integer $contactID ID of the contact related to this email entry
      * @param integer $emailID   ID of the email entry

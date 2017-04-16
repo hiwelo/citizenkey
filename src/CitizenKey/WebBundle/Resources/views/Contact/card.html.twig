@@ -45,6 +45,6 @@
 {{render(controller('WebBundle:Phone:contactEntries', {'contact': contact.id}))}}
 {{render(controller('WebBundle:Address:contactEntries', {'contactID': contact.id}))}}
 
-<a href="{{path('app_contact_edit', {'contact': contact.id})}}">{{'generic.edit'|trans}}</a>
+<a href="{{path('app_contact_edit', {'contactID': contact.id})}}">{{'generic.edit'|trans}}</a>
 
 {% endblock %}
