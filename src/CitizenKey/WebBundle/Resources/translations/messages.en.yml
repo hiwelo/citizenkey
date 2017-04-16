@@ -1,5 +1,16 @@
 contacts:
     title: Contacts
+    card:
+        civil-status: Civil status
+        firstname: Fistname
+        lastname: Lastname
+        gender: Gender
+        birthdate: Birthdate
+        miscellaneous: Miscellaneous
+        position: Position
+        company: Company
+        tags: Tags
+        creation-date: Contact creation date
 
 dashboard:
     title: Dashboard
@@ -9,3 +20,7 @@ geodata:
 
 platform:
     title: Platform
+
+generic:
+    title: CitizenKey
+    edit: Edit

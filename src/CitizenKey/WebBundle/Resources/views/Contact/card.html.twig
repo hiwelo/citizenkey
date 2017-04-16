@@ -1,31 +1,45 @@
 {% extends "WebBundle:Default:layout.html.twig" %}
 
-{% block title %}Contacts dashboard{% endblock %}
+{% block title %}{{'generic.title'|trans}}{% endblock %}
 
 {% block body %}
 <h1>{{contact.name}}</h1>
 
-<h2>Civil status</h2>
+<h2>{{'contacts.card.civil-status'|trans}}</h2>
 <dl>
-    <dt>Firstname</dt>
-    <dd>{{contact.firstname}}</dd>
-    <dt>Lastname</dt>
-    <dd>{{contact.lastname}}</dd>
-    <dt>Gender</dt>
-    <dd>{{contact.gender}}</dd>
-    <dt>Birthdate</dt>
-    <dd>{{contact.birthdate|date("d/m/Y")}}</dd>
+    {% if contact.firstname %}
+        <dt>{{'contacts.card.firstname'|trans}}</dt>
+        <dd>{{contact.firstname}}</dd>
+    {% endif %}
+    {% if contact.lastname %}
+        <dt>{{'contacts.card.lastname'|trans}}</dt>
+        <dd>{{contact.lastname}}</dd>
+    {% endif %}
+    {% if contact.gender %}
+        <dt>{{'contacts.card.gender'|trans}}</dt>
+        <dd>{{contact.gender}}</dd>
+    {% endif %}
+    {% if contact.birthdate %}
+        <dt>{{'contacts.card.birthdate'|trans}}</dt>
+        <dd>{{contact.birthdate|date("d/m/Y")}}</dd>
+    {% endif %}
 </dl>
 
-<h2>Miscellaneous</h2>
+<h2>{{'contacts.card.miscellaneous'|trans}}</h2>
 <dl>
-    <dt>Position</dt>
-    <dd>{{contact.position}}</dd>
-    <dt>Company</dt>
-    <dd>{{contact.company}}</dd>
-    <dt>Tags</dt>
-    <dd>{{contact.tags|join(', ')}}</dd>
-    <dt>Contact creation date</dt>
+    {% if contact.position %}
+        <dt>{{'contacts.card.position'|trans}}</dt>
+        <dd>{{contact.position}}</dd>
+    {% endif %}
+    {% if contact.company %}
+        <dt>{{'contacts.card.company'|trans}}</dt>
+        <dd>{{contact.company}}</dd>
+    {% endif %}
+    {% if contact.tags %}
+        <dt>{{'contacts.card.tags'|trans}}</dt>
+        <dd>{{contact.tags|join(', ')}}</dd>
+    {% endif %}
+    <dt>{{'contacts.card.creation-date'|trans}}</dt>
     <dd>{{contact.creationDate|date('d/m/Y')}}</dd>
 </dl>
 
@@ -33,6 +47,6 @@
 {{render(controller('WebBundle:Phone:contactEntries', {'contact': contact.id}))}}
 {{render(controller('WebBundle:Address:contactEntries', {'contactID': contact.id}))}}
 
-<a href="{{path('app_contact_edit', {'contact': contact.id})}}">Edit this card</a>
+<a href="{{path('app_contact_edit', {'contact': contact.id})}}">{{'generic.edit'|trans}}</a>
 
 {% endblock %}
