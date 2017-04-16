@@ -1,9 +1,7 @@
 {% extends "WebBundle:Default:layout.html.twig" %}
 
-{% block title %}Platform dashboard{% endblock %}
-
 {% block body %}
-<a href="{{ path('app_dashboard') }}">Go back to the dashboard</a>
+<a href="{{ path('app_dashboard') }}">{{'generic.back'}}</a>
 <p>
     Welcome {{ user.username }},
 </p>

@@ -27,6 +27,13 @@ dashboard:
 geodata:
     title: Geodata
 
+phone-numbers:
+    title: Phone numbers
+    title-unit: Phone number
+    actions:
+        new: Add a new phone number
+
+
 platform:
     title: Platform
 
@@ -39,6 +46,9 @@ users:
 generic:
     head-title: CitizenKey Web application
     title: CitizenKey
+    skiplinks:
+        content: Skip to main content
+        banner: Skip to banner
     add: Add new
     edit: Edit
     remove: Remove
