@@ -10,7 +10,9 @@
     </li>
     {% endfor %}
     <li>
-        <a href="{{path('app_contact_new')}}">Create new contact</a>
+        <a href="{{path('app_contact_new')}}">
+            {{'contacts.actions.new'|trans}}
+        </a>
     </li>
 </ul>
 {% endif %}

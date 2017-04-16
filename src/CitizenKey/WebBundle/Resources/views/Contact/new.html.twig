@@ -1,9 +1,7 @@
 {% extends "WebBundle:Default:layout.html.twig" %}
 
-{% block title %}Create new contact{% endblock %}
-
 {% block body %}
-<h1>Create a new contact</h1>
+<h1>{{'contacts.actions.new'|trans}}</h1>
 
 {{form_start(form)}}
 {{form_widget(form)}}

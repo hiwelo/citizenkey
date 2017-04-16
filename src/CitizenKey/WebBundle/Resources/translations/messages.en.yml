@@ -5,6 +5,10 @@ addresses:
 contacts:
     title: Contacts
     title-unit: Contact
+    actions:
+        new: Add a new contact
+        edit: Edit a contactt
+        search: Search a contact
     card:
         civil-status: Civil status
         firstname: Fistname
@@ -32,3 +36,4 @@ generic:
     add: Add new
     edit: Edit
     remove: Remove
+    back: Get back

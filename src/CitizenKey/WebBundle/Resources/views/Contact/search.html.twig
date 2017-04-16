@@ -1,9 +1,7 @@
 {% extends "WebBundle:Default:layout.html.twig" %}
 
-{% block title %}Contacts search{% endblock %}
-
 {% block body %}
-<h1>Contacts search</h1>
+<h1>{{'contacts.actions.search'|trans}}</h1>
 
 <div class="results">
     {% for card in cards %}
