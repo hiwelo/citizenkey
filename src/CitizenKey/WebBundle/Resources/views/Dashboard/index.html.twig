@@ -1,7 +1,5 @@
 {% extends "WebBundle:Default:layout.html.twig" %}
 
-{% block title %}Dashboard{% endblock %}
-
 {% block body %}
 <h1>{{'dashboard.title'|trans}}</h1>
 {% if is_granted('ROLE_ADMIN') %}<p>You're admin.</p>{% endif %}

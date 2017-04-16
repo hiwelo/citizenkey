@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{{'generic.head-title'|trans}}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -15,14 +15,14 @@
             {% endif %}
 
             <div>
-                <label for="email">Email</label>
+                <label for="email">{{'users.fields.email'|trans}}</label>
                 <input type="email" name="email" class="form-control" id="email" placeholder="abc@domain.ext">
             </div>
             <div>
-                <label for="password">Password</label>
+                <label for="password">{{'users.fields.password'|trans}}</label>
                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
             </div>
-            <button type="submit">Login</button>
+            <button type="submit">{{'users.fields.submit'|trans}}</button>
         </form>
     </body>
 </html>

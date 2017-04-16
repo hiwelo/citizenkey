@@ -30,6 +30,12 @@ geodata:
 platform:
     title: Platform
 
+users:
+    fields:
+        email: Email
+        password: Password
+        submit: Submit
+
 generic:
     head-title: CitizenKey Web application
     title: CitizenKey
