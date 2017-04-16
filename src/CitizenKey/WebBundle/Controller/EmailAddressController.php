@@ -5,6 +5,7 @@ namespace CitizenKey\WebBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use CitizenKey\WebBundle\Form\EmailAddressType;
 use CitizenKey\CoreBundle\Entity\EmailAddress;
 
@@ -15,44 +16,34 @@ class EmailAddressController extends Controller
      *
      * @Route("/contact/{contact}/email/new/", name="app_email_new")
      *
-     * @param string  $contact Contact ID
-     * @param Request $request Request object
+     * @param string  $contactID Contact ID
+     * @param Request $request   Request object
      *
      * @return Symfony\Component\HttpFoundation\Response
      */
-    public function newAction($contact, Request $request)
+    public function newAction($contactID, Request $request)
     {
         $this->denyAccessUnlessGranted('PLATFORM_USER');
 
-        $em = $this->getDoctrine()->getManager();
-        $platforms = $em->getRepository('CoreBundle:Platform');
-        $people = $em->getRepository('CoreBundle:Person');
+        return $this->saveEntry(null, $contactID, $request);
+    }
 
-        $platform = $platforms->find($this->get('session')->get('platform'));
-        $person = $people->findOneBy([
-            'platform' => $platform,
-            'id' => $contact,
-        ]);
+    /**
+     * Updates an existing email entry for an asked contact
+     *
+     * @Route("/contact/{contact}/email/{emailID}/edit", name="app_email_new")
+     *
+     * @param integer $contactID ID of the contact related to this email entry
+     * @param integer $emailID   ID of the email entry
+     * @param Request $request   Symfony HTTP Request object
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction($contactID, $emailID, Request $request)
+    {
+        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
 
-        $email = new EmailAddress();
-        $email->setPerson($person);
-
-        $form = $this->createForm(EmailAddressType::class, $email);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $email = $form->getData();
-            $em->persist($email);
-            $em->flush();
-
-            return $this->redirectToRoute('app_contact', ['contact' => $person->getID()]);
-        }
-
-        return $this->render('WebBundle:EmailAddress:new.html.twig', [
-            'contact' => $person,
-            'form' => $form->createView(),
-        ]);
+        return $this->saveEntry($emailID, $contactID, $request);
     }
 
     /**
@@ -89,5 +80,42 @@ class EmailAddressController extends Controller
             'contact' => $person,
             'emails' => $emails,
         ]);
+    }
+
+    /**
+     * Creates or updates an email address entry with the asked informations
+     *
+     * @param integer|null $emailID   ID of the asked Email address, or null
+     * @param integer      $contactID ID of the related contact card
+     * @param Request      $request   Symfony HTTP request object
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    private function saveEntry($emailID, $contactID, Request $request)
+    {
+        try {
+            $email = $this->get('citizenkey.emailaddress')->save($emailID, $contactID, $request);
+        } catch (NotFoundHttpException $e) {
+            return $this->redirectToRoute('app_contacts');
+        }
+
+        if ($email instanceof EmailAddress) {
+            return $this->redirectToRoute('app_contact', [
+                'contactID' => $email->getPerson()->getID(),
+            ]);
+        }
+
+        if (is_array($email)) {
+            if (is_null($emailID)) {
+                $page = 'new';
+            } else {
+                $page = 'edit';
+            }
+
+            return $this->render('WebBundle:Email:'.$page.'.html.twig', [
+                'contact' => $email['email']->getPerson(),
+                'form' => $email['form']->createView(),
+            ]);
+        }
     }
 }
