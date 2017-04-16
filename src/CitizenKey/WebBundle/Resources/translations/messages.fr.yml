@@ -1,5 +1,37 @@
 dashboard:
     title: 'Tableau de bord'
 
+contacts:
+    title: Contacts
+    title-unit: Contact
+    actions:
+        new: Ajouter un nouveau contact
+        edit: Éditer un contactt
+        search: Rechercher un contact
+    card:
+        civil-status: État-civil
+        firstname: Nom de famille
+        lastname: Prénoms
+        gender: Genre
+        birthdate: Date de naissance
+        miscellaneous: Informations générales
+        position: Emploi
+        company: Entreprise
+        tags: Tags
+        creation-date: Date de création de la carte
+    fields:
+        firstname: Nom de famille
+        lastname: Prénoms
+        gender: Genre
+        male: Homme
+        female: Femme
+        other: Autre (non-binary, agender, etc.)
+        unknown: Inconnu
+        birthdate: Date de naissance
+        voter: Électeur
+        registered: Inscrit
+        unregistered: Non inscrit
+        submit: Sauvegarder
+
 platform:
     title: Plateforme

@@ -20,6 +20,19 @@ contacts:
         company: Company
         tags: Tags
         creation-date: Contact creation date
+    fields:
+        firstname: Firstname
+        lastname: Lastname
+        gender: Gender
+        male: Male
+        female: Female
+        other: Other (non-binary, agender, etc.)
+        unknown: Unknown
+        birthdate: Birthdate
+        voter: Voter
+        registered: Registered
+        unregistered: Unregistered
+        submit: Save informations
 
 dashboard:
     title: Dashboard
