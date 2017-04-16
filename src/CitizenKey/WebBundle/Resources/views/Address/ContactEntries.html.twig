@@ -1,6 +1,6 @@
 {# Component displaying all email entries for a contact #}
 
-<h3>Addresses</h3>
+<h3>{{'addresses.title'|trans}}</h3>
 <ul>
     {% if addresses %}
         {% for address in addresses %}
@@ -10,6 +10,6 @@
         {% endfor %}
     {% endif %}
     <li>
-        <a href="{{path('app_address_new', {'contact': contactID})}}">Add a new address</a>
+        <a href="{{path('app_address_new', {'contact': contactID})}}">{{'generic.add'|trans}}</a>
     </li>
 </ul>

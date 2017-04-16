@@ -1,5 +1,5 @@
 {# Component displaying all email entries for a contact #}
 
 <span lang="{{address.country.code|lower}}">{{formattedAddress|raw}}</span>
-<a href="{{path('app_address_edit', {'contactID': address.person.ID, 'addressID': address.id})}}">Edit</a>
-<a href="{{path('app_address_remove', {'contactID': address.person.ID, 'addressID': address.id})}}">Remove</a>
+<a href="{{path('app_address_edit', {'contactID': address.person.ID, 'addressID': address.id})}}">{{'generic.edit'|trans}}</a>
+<a href="{{path('app_address_remove', {'contactID': address.person.ID, 'addressID': address.id})}}">{{'generic.remove'|trans}}</a>

@@ -1,5 +1,10 @@
+addresses:
+    title: Addresses
+    title-unit: Address
+
 contacts:
     title: Contacts
+    title-unit: Contact
     card:
         civil-status: Civil status
         firstname: Fistname
@@ -24,4 +29,6 @@ platform:
 generic:
     head-title: CitizenKey Web application
     title: CitizenKey
+    add: Add new
     edit: Edit
+    remove: Remove
