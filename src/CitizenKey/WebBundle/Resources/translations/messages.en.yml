@@ -22,5 +22,6 @@ platform:
     title: Platform
 
 generic:
+    head-title: CitizenKey Web application
     title: CitizenKey
     edit: Edit
