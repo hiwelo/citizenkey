@@ -185,7 +185,7 @@ class ContactController extends Controller
             ]);
         }
 
-        if (is_array($address)) {
+        if (is_array($card)) {
             if (is_null($contactID)) {
                 $page = 'new';
             } else {
