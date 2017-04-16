@@ -40,7 +40,9 @@ class GenericVoter extends Voter
     /**
      * Voter constructor
      *
-     * @param EntityManager $em Doctrine Entity Manager
+     * @param EntityManager                  $em              Doctrine Entity Manager
+     * @param Session                        $session         Session Manager object
+     * @param AccessDecisionManagerInterface $decisionManager Access Decision Manager object
      *
      * @return void
      */
@@ -67,7 +69,7 @@ class GenericVoter extends Voter
     /**
      * {@inheritdoc}
      */
-    protected function voteOnAttribute($attribute, $subject = null, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
     {
         // the user must be logged in; if not, deny access
         $user = $token->getUser();

@@ -33,6 +33,8 @@ class ContactController extends Controller
      *
      * @Route("/contacts/new/", name="app_contact_new")
      *
+     * @param Request $request Request object
+     *
      * @return Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
@@ -89,7 +91,7 @@ class ContactController extends Controller
      *
      * @Route("/contact/{contactID}/", name="app_contact")
      *
-     * @param string $contact Contact ID
+     * @param string $contactID Contact ID
      *
      * @return Symfony\Component\HttpFoundation\Response
      */
@@ -189,7 +191,7 @@ class ContactController extends Controller
     public function smallCardAction($card)
     {
         return $this->render('WebBundle:Contact:smallCard.html.twig', [
-            'card' => $card
+            'card' => $card,
         ]);
     }
 }

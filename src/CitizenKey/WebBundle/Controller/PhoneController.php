@@ -15,6 +15,9 @@ class PhoneController extends Controller
      *
      * @Route("/contact/{contact}/phone/new/", name="app_phone_new")
      *
+     * @param string  $contact Contact ID
+     * @param Request $request Request object
+     *
      * @return Symfony\Component\HttpFoundation\Response
      */
     public function newAction($contact, Request $request)

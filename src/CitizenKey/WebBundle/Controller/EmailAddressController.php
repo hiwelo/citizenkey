@@ -15,6 +15,9 @@ class EmailAddressController extends Controller
      *
      * @Route("/contact/{contact}/email/new/", name="app_email_new")
      *
+     * @param string  $contact Contact ID
+     * @param Request $request Request object
+     *
      * @return Symfony\Component\HttpFoundation\Response
      */
     public function newAction($contact, Request $request)

@@ -12,5 +12,4 @@ class GeographyControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/geography/');
     }
-
 }

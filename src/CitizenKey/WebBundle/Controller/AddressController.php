@@ -73,7 +73,7 @@ class AddressController extends Controller
     /**
      * Returns a component with all addresses for an asked contact
      *
-     * @param string $contact Asked contact ID
+     * @param string $contactID Asked contact ID
      *
      * @return Symfony\Component\HttpFoundation\Response
      */
@@ -121,12 +121,12 @@ class AddressController extends Controller
      * Creates or updates an address entry with the asked informations
      *
      * @param string  $contactID Contact ID
-     * @param string  $addressID Address entry ID
+     * @param string  $addressID Address entry ID, null for a creation
      * @param Request $request   Request object
      *
      * @return Symfony\Component\HttpFoundation\Response
      */
-    private function saveAddress($contactID, $addressID = null, Request $request)
+    private function saveAddress($contactID, $addressID, Request $request)
     {
         try {
             $address = $this->get('citizenkey.address')->save($contactID, $addressID, $request);
