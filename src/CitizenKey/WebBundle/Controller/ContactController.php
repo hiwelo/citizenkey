@@ -41,29 +41,7 @@ class ContactController extends Controller
     {
         $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
 
-        $em = $this->getDoctrine()->getManager();
-        $platforms = $em->getRepository('CoreBundle:Platform');
-        $platform = $platforms->find($this->get('session')->get('platform'));
-
-        $person = new Person();
-        $person->setPlatform($platform);
-        $person->setCreationDate(new \DateTime());
-
-        $form = $this->createForm(ContactType::class, $person);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $person = $form->getData();
-            $em->persist($person);
-            $em->flush();
-
-            return $this->redirectToRoute('app_contact', ['contact' => $person->getID()]);
-        }
-
-        return $this->render('WebBundle:Contact:new.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        return $this->saveCard(null, $request);
     }
 
     /**
@@ -114,50 +92,40 @@ class ContactController extends Controller
     /**
      * Contact card edition
      *
-     * @Route("/contact/{contact}/edit", name="app_contact_edit")
+     * @Route("/contact/{contactID}/edit", name="app_contact_edit")
      *
      * @param string                                   $contact Contact ID
      * @param Symfony\Component\HttpFoundation\Request $request Request object
      *
      * @return Symfony\Component\HttpFoundation\Response
      */
-    public function editAction($contact, Request $request)
+    public function editAction($contactID, Request $request)
     {
         $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
 
-        $em = $this->getDoctrine()->getManager();
+        return $this->saveCard($contactID, $request);
+    }
 
-        $platforms = $em->getRepository('CoreBundle:Platform');
-        $platform = $platforms->find($this->get('session')->get('platform'));
+    /**
+     * Deletes a specific contact card
+     *
+     * @Route("/contact/{contact}/remove", name="app_contact_delete")
+     *
+     * @param integer $contactID ID of the contact card to delete
+     *
+     * @return Symfony/Component/HttpFoundation/Response
+     */
+    public function removeAction($contactID)
+    {
+        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
 
-        $people = $em->getRepository('CoreBundle:Person');
-
-        $person = $people->findOneBy([
-            'id' => $contact,
-            'platform' => $platform,
-        ]);
-
-        if (!$person) {
+        try {
+            $this->get('citizenkey.person')->remove($contactID);
+        } catch (NotFoundHttpException $e) {
             return $this->redirectToRoute('app_contacts');
         }
 
-        $form = $this->createForm(ContactType::class, $person);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $person = $form->getData();
-            $em->persist($person);
-            $em->flush();
-
-            return $this->redirectToRoute('app_contact', ['contact' => $person->getID()]);
-        }
-
-        return $this->render('WebBundle:Contact:edit.html.twig', [
-            'user' => $this->getUser(),
-            'contact' => $person,
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('app_contacts');
     }
 
     /**
@@ -193,5 +161,41 @@ class ContactController extends Controller
         return $this->render('WebBundle:Contact:smallCard.html.twig', [
             'card' => $card,
         ]);
+    }
+
+    /**
+     * Creates or updates informations for an asked person
+     *
+     * @param integer|null $contactID if non null, the ID of the asked person
+     * @param Request $request Symfony HTTP Request object
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    private function saveCard($contactID, Request $request)
+    {
+        try {
+            $card = $this->get('citizenkey.person')->save($contactID, $request);
+        } catch (NotFoundHttpException $e) {
+            return $this->redirectToRoute('app_contacts');
+        }
+
+        if ($card instanceof Person) {
+            return $this->redirectToRoute('app_contact', [
+                'contactID' => $card->getID(),
+            ]);
+        }
+
+        if (is_array($address)) {
+            if (is_null($contactID)) {
+                $page = 'new';
+            } else {
+                $page = 'edit';
+            }
+
+            return $this->render('WebBundle:Contact:'.$page.'.html.twig', [
+                'contact' => $card['person'],
+                'form' => $card['form']->createView(),
+            ]);
+        }
     }
 }
