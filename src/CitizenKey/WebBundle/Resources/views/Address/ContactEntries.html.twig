@@ -5,7 +5,7 @@
     {% if addresses %}
         {% for address in addresses %}
         <li>
-            {{render(controller('WebBundle:Address:getInlineAddress', {'address': address.id}))}}
+            {{render(controller('WebBundle:Address:getInlineAddress', {'addressID': address.id}))}}
         </li>
         {% endfor %}
     {% endif %}

@@ -92,6 +92,32 @@ class AddressController extends Controller
     }
 
     /**
+     * Returns block address template
+     *
+     * @param string $addressID Asked address ID
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    public function getBlockAddressAction($addressID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $address = $em->getRepository('CoreBundle:Address')
+            ->find($addressID);
+
+        try {
+            $formattedAddress = $this->get('citizenkey.address')
+                ->formatAddress($address, true, false);
+        } catch (NotFoundHttpException $e) {
+            return $this->redirectToRoute('app_contacts');
+        }
+
+        return $this->render('WebBundle:Address:address.html.twig', [
+            'address' => $address,
+            'formattedAddress' => $formattedAddress,
+        ]);
+    }
+
+    /**
      * Returns inline address template
      *
      * @param string $addressID Asked address ID
