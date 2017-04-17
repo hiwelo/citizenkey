@@ -23,8 +23,6 @@ class AddressController extends Controller
      */
     public function newAction($contact, Request $request)
     {
-        $this->denyAccessUnlessGranted('PLATFORM_USER');
-
         return $this->saveAddress($contact, null, $request);
     }
 
@@ -41,8 +39,6 @@ class AddressController extends Controller
      */
     public function editAction($contactID, $addressID, Request $request)
     {
-        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
-
         return $this->saveAddress($contactID, $addressID, $request);
     }
 
@@ -59,10 +55,8 @@ class AddressController extends Controller
      */
     public function removeAction($contactID, $addressID, Request $request)
     {
-        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
-
         try {
-            $this->get('citizenkey.address')->remove($addressID);
+            $this->get('citizenkey.address')->remove($addressID, $contactID);
         } catch (NotFoundHttpException $e) {
             return $this->redirectToRoute('app_contacts');
         }

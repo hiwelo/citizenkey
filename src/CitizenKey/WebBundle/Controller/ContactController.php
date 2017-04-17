@@ -23,8 +23,6 @@ class ContactController extends Controller
     {
         $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
 
-        $em = $this->getDoctrine()->getManager();
-
         return $this->render('WebBundle:Contact:dashboard.html.twig', []);
     }
 
@@ -39,8 +37,6 @@ class ContactController extends Controller
      */
     public function newAction(Request $request)
     {
-        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
-
         return $this->saveCard(null, $request);
     }
 
