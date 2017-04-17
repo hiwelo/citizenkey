@@ -1,5 +1,6 @@
-dashboard:
-    title: 'Tableau de bord'
+addresses:
+    title: Addresses
+    title-unit: Address
 
 contacts:
     title: Contacts
@@ -10,8 +11,8 @@ contacts:
         search: Rechercher un contact
     card:
         civil-status: État-civil
-        firstname: Nom de famille
-        lastname: Prénoms
+        firstname: Prénoms
+        lastname: Nom de famille
         gender: Genre
         birthdate: Date de naissance
         miscellaneous: Informations générales
@@ -20,8 +21,8 @@ contacts:
         tags: Tags
         creation-date: Date de création de la carte
     fields:
-        firstname: Nom de famille
-        lastname: Prénoms
+        firstname: Prénoms
+        lastname: Nom de famille
         gender: Genre
         male: Homme
         female: Femme
@@ -33,5 +34,35 @@ contacts:
         unregistered: Non inscrit
         submit: Sauvegarder
 
+dashboard:
+    title: Tableau de bord
+
+geodata:
+    title: Geodata
+
+phone-numbers:
+    title: Téléphones
+    title-unit: Numéro de téléphone
+    actions:
+        new: Ajouter un numéro de téléphone
+
+
 platform:
-    title: Plateforme
+    title: Platforme
+
+users:
+    fields:
+        email: Email
+        password: Mot de passe
+        submit: Valider
+
+generic:
+    head-title: CitizenKey — Application web
+    title: CitizenKey
+    skiplinks:
+        content: Aller au contenu principal
+        banner: Aller au header
+    add: Ajouter
+    edit: Éditer
+    remove: Supprimer
+    back: Revenir en arrière
