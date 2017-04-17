@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.raccoon.studio/citizenkey/core-bundle",
-                "reference": "ff8b114401eb93d81fe6a831c411d199eb2ad108"
+                "reference": "2b253c38b391f3e7f40d3f6a6ce2d3716e79e281"
             },
             "require": {
                 "php": "~5.5|~7.0",
@@ -39,7 +39,7 @@
                 "symfony",
                 "symfony-bundle"
             ],
-            "time": "2017-04-15 23:44:38"
+            "time": "2017-04-17 10:52:10"
         },
         {
             "name": "composer/ca-bundle",
