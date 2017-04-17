@@ -161,7 +161,13 @@ class AddressController extends Controller
         }
 
         if (is_array($address)) {
-            return $this->render('WebBundle:Address:new.html.twig', [
+            if (is_null($emailID)) {
+                $page = 'new';
+            } else {
+                $page = 'edit';
+            }
+
+            return $this->render('WebBundle:Address:'.$page.'.html.twig', [
                 'contact' => $address['address']->getPerson(),
                 'form' => $address['form']->createView(),
             ]);

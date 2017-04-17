@@ -23,8 +23,6 @@ class EmailAddressController extends Controller
      */
     public function newAction($contactID, Request $request)
     {
-        $this->denyAccessUnlessGranted('PLATFORM_USER');
-
         return $this->saveEntry(null, $contactID, $request);
     }
 
@@ -41,8 +39,6 @@ class EmailAddressController extends Controller
      */
     public function editAction($contactID, $emailID, Request $request)
     {
-        $this->denyAccessUnlessGranted('PLATFORM_MANAGER');
-
         return $this->saveEntry($emailID, $contactID, $request);
     }
 
