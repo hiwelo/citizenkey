@@ -1,10 +1,9 @@
 {% extends "WebBundle:Default:layout.html.twig" %}
 
+{% block title %}Add a new email{% endblock %}
+
 {% block body %}
-<h1>
-    Edit a new address to
-    <a href="{{path('app_contact', {'contactID': contact.ID})}}">{{contact.name}}</a>
-</h1>
+<h1>Add a new email to {{contact.name}}</h1>
 
 {{form_start(form)}}
 {{form_widget(form)}}

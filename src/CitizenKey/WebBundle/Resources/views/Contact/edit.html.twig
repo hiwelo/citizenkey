@@ -7,7 +7,7 @@
 {{form_widget(form)}}
 {{form_end(form)}}
 
-<a href="{{path('app_contact', {'contact': contact.id})}}">
+<a href="{{path('app_contact', {'contactID': contact.id})}}">
     {{'generic.back'|trans}}
 </a>
 {% endblock %}

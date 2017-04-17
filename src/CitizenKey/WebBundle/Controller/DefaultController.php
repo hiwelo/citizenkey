@@ -17,7 +17,7 @@ class DefaultController extends Controller
     public function headerAction()
     {
         try {
-            $subscription = $this->get('citizenkey.subscription')->load();
+            $subscription = $this->get('citizenkey.subscription')->getCurrent();
         } catch (NotFoundHttpException $e) {
             return $this->redirectToRoute('app_platform_choice');
         }

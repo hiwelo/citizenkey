@@ -29,7 +29,7 @@ class EmailAddressController extends Controller
     /**
      * Updates an existing email entry for an asked contact
      *
-     * @Route("/contact/{contact}/email/{emailID}/edit", name="app_email_edit")
+     * @Route("/contact/{contactID}/email/{emailID}/edit", name="app_email_edit")
      *
      * @param integer $contactID ID of the contact related to this email entry
      * @param integer $emailID   ID of the email entry
@@ -43,13 +43,34 @@ class EmailAddressController extends Controller
     }
 
     /**
-     * Returns a component with all emails for an asked contact
+     * Deletes an existing email entry for an asked contact
      *
-     * @param string $contact Asked contact ID
+     * @Route("/contact/{contactID}/email/{emailID}/remove", name="app_email_remove")
+     *
+     * @param integer $contactID ID of the contact related to this email entry
+     * @param integer $emailID   ID of the email entry
      *
      * @return Symfony\Component\HttpFoundation\Response
      */
-    public function contactEntriesAction($contact)
+    public function removeAction($contactID, $emailID)
+    {
+        try {
+            $this->get('citizenkey.emailaddress')->remove($emailID, $contactID);
+        } catch (NotFoundHttpException $e) {
+            return $this->redirectToRoute('app_contacts');
+        }
+
+        return $this->redirectToRoute('app_contact', ['contactID' => $contactID]);
+    }
+
+    /**
+     * Returns a component with all emails for an asked contact
+     *
+     * @param string $contactID Asked contact ID
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    public function contactEntriesAction($contactID)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -59,7 +80,7 @@ class EmailAddressController extends Controller
         $people = $em->getRepository('CoreBundle:Person');
 
         $person = $people->findOneBy([
-            'id' => $contact,
+            'id' => $contactID,
             'platform' => $platform,
         ]);
 
@@ -108,7 +129,7 @@ class EmailAddressController extends Controller
                 $page = 'edit';
             }
 
-            return $this->render('WebBundle:Email:'.$page.'.html.twig', [
+            return $this->render('WebBundle:EmailAddress:'.$page.'.html.twig', [
                 'contact' => $email['email']->getPerson(),
                 'form' => $email['form']->createView(),
             ]);

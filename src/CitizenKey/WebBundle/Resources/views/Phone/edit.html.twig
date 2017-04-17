@@ -1,10 +1,7 @@
 {% extends "WebBundle:Default:layout.html.twig" %}
 
 {% block body %}
-<h1>
-    Edit a new address to
-    <a href="{{path('app_contact', {'contactID': contact.ID})}}">{{contact.name}}</a>
-</h1>
+<h1>{{'phone-numbers.actions.new'|trans}}</h1>
 
 {{form_start(form)}}
 {{form_widget(form)}}

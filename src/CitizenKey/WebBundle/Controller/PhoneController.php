@@ -23,13 +23,13 @@ class PhoneController extends Controller
      */
     public function newAction($contactID, Request $request)
     {
-        return $this->saveEntry(null, $contactID, $request)
+        return $this->saveEntry(null, $contactID, $request);
     }
 
     /**
      * Updates an existing phone entry for an asked contact
      *
-     * @Route("/contact/{contact}/phone/{phoneID}/edit", name="app_phone_edit")
+     * @Route("/contact/{contactID}/phone/{phoneID}/edit", name="app_phone_edit")
      *
      * @param integer $contactID ID of the contact related to this email entry
      * @param integer $phoneID   ID of the phone entry
@@ -43,13 +43,34 @@ class PhoneController extends Controller
     }
 
     /**
-     * Returns a component with all phone numbers for an asked contact
+     * Deletes an existing phone entry for an asked contact
      *
-     * @param string $contact Asked contact ID
+     * @Route("/contact/{contactID}/phone/{phoneID}/remove", name="app_phone_remove")
+     *
+     * @param integer $contactID ID of the contact related to this phone entry
+     * @param integer $phoneID   ID of the phone entry
      *
      * @return Symfony\Component\HttpFoundation\Response
      */
-    public function contactEntriesAction($contact)
+    public function removeAction($contactID, $phoneID)
+    {
+        try {
+            $this->get('citizenkey.phone')->remove($phoneID, $contactID);
+        } catch (NotFoundHttpException $e) {
+            return $this->redirectToRoute('app_contacts');
+        }
+
+        return $this->redirectToRoute('app_contact', ['contactID' => $contactID]);
+    }
+
+    /**
+     * Returns a component with all phone numbers for an asked contact
+     *
+     * @param string $contactID Asked contact ID
+     *
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    public function contactEntriesAction($contactID)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -59,7 +80,7 @@ class PhoneController extends Controller
         $people = $em->getRepository('CoreBundle:Person');
 
         $person = $people->findOneBy([
-            'id' => $contact,
+            'id' => $contactID,
             'platform' => $platform,
         ]);
 
@@ -95,7 +116,7 @@ class PhoneController extends Controller
             return $this->redirectToRoute('app_contacts');
         }
 
-        if ($phone instanceof EmailAddress) {
+        if ($phone instanceof Phone) {
             return $this->redirectToRoute('app_contact', [
                 'contactID' => $phone->getPerson()->getID(),
             ]);
@@ -108,7 +129,7 @@ class PhoneController extends Controller
                 $page = 'edit';
             }
 
-            return $this->render('WebBundle:Email:'.$page.'.html.twig', [
+            return $this->render('WebBundle:Phone:'.$page.'.html.twig', [
                 'contact' => $phone['email']->getPerson(),
                 'form' => $phone['form']->createView(),
             ]);

@@ -5,13 +5,13 @@
     {% if phones %}
         {% for phone in phones %}
         <li>
-            <a href="tel:{{phone.number|phone_number_format('E164')}}">
-                {{phone.diallableNumber}}
-            </a>
+            <a href="tel:{{phone.number|phone_number_format('E164')}}">{{phone.diallableNumber}}</a>
+            <a href="{{path('app_phone_edit', {'contactID': phone.person.ID, 'phoneID': phone.id})}}">{{'generic.edit'|trans}}</a>
+            <a href="{{path('app_phone_remove', {'contactID': phone.person.ID, 'phoneID': phone.id})}}">{{'generic.remove'|trans}}</a>
         </li>
         {% endfor %}
     {% endif %}
     <li>
-        <a href="{{path('app_phone_new', {'contact': contact.id})}}">{{'phone-numbers.actions.new'|trans}}</a>
+        <a href="{{path('app_phone_new', {'contactID': contact.id})}}">{{'phone-numbers.actions.new'|trans}}</a>
     </li>
 </ul>

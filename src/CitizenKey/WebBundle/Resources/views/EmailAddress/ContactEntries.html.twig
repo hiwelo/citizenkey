@@ -5,9 +5,9 @@
     {% if emails %}
         {% for email in emails %}
         <li>
-            <a href="mailto:{{email.address}}">
-                {{email.address}}
-            </a>
+            <a href="mailto:{{email.address}}">{{email.address}}</a>
+            <a href="{{path('app_email_edit', {'contactID': email.person.ID, 'emailID': email.id})}}">{{'generic.edit'|trans}}</a>
+            <a href="{{path('app_email_remove', {'contactID': email.person.ID, 'emailID': email.id})}}">{{'generic.remove'|trans}}</a>
         </li>
         {% endfor %}
     {% endif %}

@@ -73,11 +73,7 @@ class AddressController extends Controller
      */
     public function contactEntriesAction($contactID)
     {
-        try {
-            $addresses = $this->get('citizenkey.address')->loadForCard($contactID);
-        } catch (NotFoundHttpException $e) {
-            return $this->redirectToRoute('app_contacts');
-        }
+        $addresses = $this->get('citizenkey.address')->loadForCard($contactID);
 
         return $this->render('WebBundle:Address:ContactEntries.html.twig', [
             'contactID' => $contactID,
@@ -161,7 +157,7 @@ class AddressController extends Controller
         }
 
         if (is_array($address)) {
-            if (is_null($emailID)) {
+            if (is_null($addressID)) {
                 $page = 'new';
             } else {
                 $page = 'edit';
